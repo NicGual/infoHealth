@@ -16,19 +16,9 @@ const SidebarBoots = () => {
         cookies.remove('usertype', {path:"/"});
         window.location.href='./login'
     }
-    const verification = () =>{
-        if(!cookies.get('name')) {
-            window.location.href="./login"
-            }
-    }
+    
     return (
         <>
-            {
-                console.log(cookies.get('name')),
-                verification()
-                
-
-             }
             <div className='navbar'>
                 <FaIcons.FaBars className='menu-bars ' onClick={showSidebar} />
             </div>

@@ -49,7 +49,12 @@ const Login = () => {
                 
 
             }else{
-                alert('user or password does not match')
+                if(data.name){
+                    window.location.href='./login'
+                }else{
+                    alert('user or password does not match')
+                }
+                
             }
         } catch (error) {
             console.log(error);
