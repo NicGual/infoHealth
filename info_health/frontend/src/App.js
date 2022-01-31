@@ -9,9 +9,9 @@ import Layout from './components/Layout/Layout';
 import Signin from './components/Signin/Signin'
 import Signup from './components/Signup/Signup';
 import { BrowserRouter as Router, Switch,Route } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './components/SidebarBoots/SidebarBoots.css'
-import 'bootstrap/dist/js/bootstrap.bundle'
+//import 'bootstrap/dist/css/bootstrap.min.css';
+//import 'bootstrap/dist/js/bootstrap.bundle'
 //import './components/Sidebar/Sidebar.css'
 
 function App() {

@@ -4,12 +4,12 @@ import Axios from 'axios'
 import image from '../../public/ips_logo.png'
 
 const Signup = () => {
-    const cookies =new Cookies()
+    const cookies = new Cookies()
     const initialState = {
         name: '',
         surname: '',
         email: '',
-        usertype:'',
+        usertype: '',
         password: '',
         confirmpassword: ''
     };
@@ -23,7 +23,7 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const url = 'http://localhost:4000/auth/singup' 
+            const url = 'http://localhost:4000/auth/singup'
 
             const { data } = await Axios.post(
                 url,
@@ -69,13 +69,13 @@ const Signup = () => {
                                     <div className="card-body">
                                         <form onSubmit={handleSubmit} className="justify-content-center" method="POST">
 
-                                            <h6 className="font-weight-bold mt-0 mb-1">Información personal</h6>
+                                            <h6 className="font-weight-bold mt-0 mb-3">Información personal</h6>
                                             <div className="form-group row d-flex justify-content-center">
                                                 <div className="col-md-6 mb-2">
-                                                    <select className="custom-select mr-sm-2" id="inlineFormCustomSelect" 
-                                                    name="identification_type" onChange={handleChange} autoFocus>
+                                                    <select className="form-select mr-sm-2" id="inlineFormCustomSelect"
+                                                        name="identification_type" onChange={handleChange} autoFocus>
 
-                                                        <option selected>--- Elija un tipo de identificación ---</option>
+                                                        <option selected disabled>--- Elija un tipo de identificación ---</option>
                                                         <option value="Cedula">Cédula</option>
                                                         <option value="Cedula_extrangeria">Cédula de extrangeria</option>
                                                         <option value="Pasaporte">Pasaporte</option>
@@ -87,7 +87,6 @@ const Signup = () => {
                                                         <option value="Documento_extrangero">Documento extrangero</option>
                                                         <option value="Sin_identificacion">Sin identificación</option>
                                                     </select>
-                                                    <a>error</a>
                                                 </div>
                                                 <div className="col-md-6 mb-2">
                                                     <input
@@ -97,7 +96,7 @@ const Signup = () => {
                                                         name="identification"
                                                         id='formIdentification'
                                                         onChange={handleChange}
-                                                        autoFocus
+
 
                                                     />
                                                 </div>
@@ -109,51 +108,51 @@ const Signup = () => {
                                                         placeholder="Nombres"
                                                         id='formName'
                                                         onChange={handleChange}
-                                                        autoFocus
+
 
                                                     />
                                                 </div>
                                                 <div className="col-md-4 mb-0">
-                                                    <input 
-                                                        type="text" 
-                                                        className="form-control bg-light" 
-                                                        name="lastname" 
+                                                    <input
+                                                        type="text"
+                                                        className="form-control bg-light"
+                                                        name="lastname"
                                                         placeholder="Primer apellido"
                                                         onChange={handleChange}
-                                                        autoFocus
+
                                                     />
                                                 </div>
                                                 <div className="col-md-4 mb-0">
-                                                    <input 
-                                                        type="text" 
-                                                        className="form-control bg-light" 
+                                                    <input
+                                                        type="text"
+                                                        className="form-control bg-light"
                                                         name="sec_lastname"
-                                                        placeholder="Segundo apellido" 
+                                                        placeholder="Segundo apellido"
                                                         onChange={handleChange}
-                                                        autoFocus
+
                                                     />
                                                 </div>
                                             </div>
 
 
-                                            <h6 className="font-weight-bold mt-0 mb-1">Información general</h6>
+                                            <h6 className="font-weight-bold mt-2 mb-1">Información general</h6>
                                             <div className="form-group row">
                                                 <div className="col-md-6 mb-0">
                                                     <label for="f_nac" className="mb-0">Fecha de nacimiento:</label>
-                                                    <input 
-                                                        type="date" 
-                                                        className="form-control bg-light mt-0" 
-                                                        id="f_nac" 
-                                                        name="date_of_bird" 
+                                                    <input
+                                                        type="date"
+                                                        className="form-control bg-light mt-0"
+                                                        id="f_nac"
+                                                        name="date_of_bird"
                                                         placeholder="Fecha de nacimiento"
                                                         onChange={handleChange}
-                                                        autoFocus
+
                                                     />
                                                 </div>
                                                 <div className="col-md-6 mb-2">
                                                     <label for="genero" className="mb-0">Genero:</label>
-                                                    <select className="custom-select mr-sm-2" id="gender" name="gender" 
-                                                    onChange={handleChange} autoFocus>
+                                                    <select className="form-select mr-sm-2" id="gender" name="gender"
+                                                        onChange={handleChange}>
                                                         <option selected>--- Seleccione su sexo ---</option>
                                                         <option value="Masculino">Masculino</option>
                                                         <option value="Femenino">Femenino</option>
@@ -162,8 +161,8 @@ const Signup = () => {
                                                 </div>
                                                 <div className="col-md-6 mb-2">
                                                     <label for="sangre" className="mb-0">Tipo de sangre:</label>
-                                                    <select className="custom-select mr-sm-2" id="blood_type" name="blood_type" 
-                                                    onChange={handleChange} autoFocus>
+                                                    <select className="form-select mr-sm-2" id="blood_type" name="blood_type"
+                                                        onChange={handleChange}>
                                                         <option selected>--- seleccione su tipo de sangre ---</option>
                                                         <option value="A">A</option>
                                                         <option value="B">B</option>
@@ -173,8 +172,8 @@ const Signup = () => {
                                                 </div>
                                                 <div className="col-md-6 mb-2">
                                                     <label for="rh" className="mb-0">Rh:</label>
-                                                    <select className="custom-select mr-sm-2" id="rh" name="rh" 
-                                                    onChange={handleChange} autoFocus>
+                                                    <select className="form-select mr-sm-2" id="rh" name="rh"
+                                                        onChange={handleChange}>
                                                         <option selected>--- Seleccione su Rh ---</option>
                                                         <option value="Positivo">Positivo</option>
                                                         <option value="Negativo">Negativo</option>
@@ -182,8 +181,8 @@ const Signup = () => {
                                                 </div>
                                                 <div className="col-md-6 mb-0">
                                                     <label for="marital_status" className="mb-0">Estado civil:</label>
-                                                    <select className="custom-select mr-sm-2" id="marital_status" name="marital_status" 
-                                                    onChange={handleChange} autoFocus>
+                                                    <select className="form-select mr-sm-2" id="marital_status" name="marital_status"
+                                                        onChange={handleChange}>
                                                         <option value="Soltero">Soltero/a</option>
                                                         <option value="Casado">Casado/a</option>
                                                         <option value="UnionLibre">Unión libre</option>
@@ -194,90 +193,90 @@ const Signup = () => {
                                                 </div>
                                                 <div className="col-md-6 mb-0">
                                                     <label for="eps" className="mb-0">EPS:</label>
-                                                    <input 
-                                                        type="text" 
-                                                        className="form-control bg-light" 
-                                                        id="EPS" 
-                                                        name="EPS" 
+                                                    <input
+                                                        type="text"
+                                                        className="form-control bg-light"
+                                                        id="EPS"
+                                                        name="EPS"
                                                         placeholder="EPS a la que está afiliado/a"
-                                                        onChange={handleChange} 
-                                                        autoFocus
+                                                        onChange={handleChange}
+
                                                     />
                                                 </div>
                                             </div>
 
 
-                                            <h6 className="font-weight-bold mt-0 mb-1">Datos de localización</h6>
+                                            <h6 className="font-weight-bold mt-2 mb-1">Datos de localización</h6>
                                             <div className="form-group row">
                                                 <div className="col-md-6 mb-2">
-                                                    <input 
-                                                        type="number" 
-                                                        className="form-control bg-light" 
-                                                        name="home_phone"    
-                                                        placeholder="Teléfono de la casa" 
-                                                        onChange={handleChange} 
-                                                        autoFocus   
-                                                    />
-                                                </div>
-                                                <div className="col-md-6 mb-2">
-                                                    <input 
-                                                        type="number" 
-                                                        className="form-control bg-light" 
-                                                        name="mobile_phone"
-                                                        placeholder="Teléfono móvil" 
-                                                        onChange={handleChange} 
-                                                        autoFocus
-                                                    />
-                                                </div>
-                                                <div className="col-md-6 mb-2">
-                                                    <input 
-                                                        type="number" 
-                                                        className="form-control bg-light" 
-                                                        name="work_phone"
-                                                        placeholder="Teléfono del trabajo"
-                                                        onChange={handleChange} 
-                                                        autoFocus 
+                                                    <input
+                                                        type="number"
+                                                        className="form-control bg-light"
+                                                        name="home_phone"
+                                                        placeholder="Teléfono de la casa"
+                                                        onChange={handleChange}
 
                                                     />
                                                 </div>
                                                 <div className="col-md-6 mb-2">
-                                                    <input 
-                                                        type="text" 
-                                                        className="form-control bg-light" 
+                                                    <input
+                                                        type="number"
+                                                        className="form-control bg-light"
+                                                        name="mobile_phone"
+                                                        placeholder="Teléfono móvil"
+                                                        onChange={handleChange}
+
+                                                    />
+                                                </div>
+                                                <div className="col-md-6 mb-2">
+                                                    <input
+                                                        type="number"
+                                                        className="form-control bg-light"
+                                                        name="work_phone"
+                                                        placeholder="Teléfono del trabajo"
+                                                        onChange={handleChange}
+
+
+                                                    />
+                                                </div>
+                                                <div className="col-md-6 mb-2">
+                                                    <input
+                                                        type="text"
+                                                        className="form-control bg-light"
                                                         name="address"
-                                                        placeholder="Dirección" 
-                                                        onChange={handleChange} 
-                                                        autoFocus
+                                                        placeholder="Dirección"
+                                                        onChange={handleChange}
+
                                                     />
                                                 </div>
                                                 <div className="col-md-6 mb-0">
-                                                    <input 
-                                                        type="text" 
-                                                        className="form-control bg-light" 
+                                                    <input
+                                                        type="text"
+                                                        className="form-control bg-light"
                                                         name="city"
                                                         placeholder="Ciudad"
-                                                        onChange={handleChange} 
-                                                        autoFocus                                                          
+                                                        onChange={handleChange}
+
                                                     />
                                                 </div>
                                                 <div className="col-md-6 mb-0">
-                                                    <input 
-                                                        type="text" 
-                                                        className="form-control bg-light" 
+                                                    <input
+                                                        type="text"
+                                                        className="form-control bg-light"
                                                         name="department"
-                                                        placeholder="Departamento" 
-                                                        onChange={handleChange} 
-                                                        autoFocus                                                            
+                                                        placeholder="Departamento"
+                                                        onChange={handleChange}
+
                                                     />
                                                 </div>
                                             </div>
 
 
-                                            <h6 className="font-weight-bold mt-0 mb-1">Información de sesión</h6>
+                                            <h6 className="font-weight-bold mt-2 mb-1">Información de sesión</h6>
                                             <div className="form-group row d-flex justify-content-center">
                                                 <div className="col-md-6 mb-2">
-                                                    <select className="custom-select mr-sm-2" id="role" name="role" 
-                                                    onChange={handleChange} autoFocus>
+                                                    <select className="form-select mr-sm-2" id="role" name="role"
+                                                        onChange={handleChange}>
                                                         <option selected>--- Elija un tipo de usuario ---</option>
                                                         <option value="Paciente">Paciente</option>
                                                         <option value="Empleado">Empleado</option>
@@ -286,97 +285,97 @@ const Signup = () => {
                                                     </select>
                                                 </div>
                                                 <div className="col-md-6 mb-2">
-                                                    <input 
-                                                        type="email" 
-                                                        className="form-control bg-light" 
-                                                        name="email" 
+                                                    <input
+                                                        type="email"
+                                                        className="form-control bg-light"
+                                                        name="email"
                                                         placeholder="Email"
-                                                        onChange={handleChange} 
-                                                        autoFocus
+                                                        onChange={handleChange}
+
                                                     />
                                                 </div>
                                                 <div className="col-md-6 mb-0">
-                                                    <input 
-                                                        type="password" 
-                                                        className="form-control bg-light" 
-                                                        name="password" 
-                                                        placeholder="Contraseña" 
-                                                        onChange={handleChange} 
-                                                        autoFocus
+                                                    <input
+                                                        type="password"
+                                                        className="form-control bg-light"
+                                                        name="password"
+                                                        placeholder="Contraseña"
+                                                        onChange={handleChange}
+
                                                     />
                                                 </div>
                                                 <div className="col-md-6 mb-0">
-                                                    <input 
-                                                        type="password" 
-                                                        className="form-control bg-light" 
-                                                        name="confirm_password" 
-                                                        placeholder="Confirmar contraseña" 
-                                                        onChange={handleChange} 
-                                                        autoFocus
+                                                    <input
+                                                        type="password"
+                                                        className="form-control bg-light"
+                                                        name="confirm_password"
+                                                        placeholder="Confirmar contraseña"
+                                                        onChange={handleChange}
+
                                                     />
                                                 </div>
                                             </div>
 
 
-                                            <h6 className="font-weight-bold mt-0 mb-1">Información de contacto</h6>
+                                            <h6 className="font-weight-bold mt-2 mb-1">Información de contacto</h6>
                                             <div className="form-group row">
                                                 <div className="col-md-4 mb-2">
-                                                    <input 
-                                                        type="text" 
-                                                        className="form-control bg-light" 
-                                                        name="contact_name" 
+                                                    <input
+                                                        type="text"
+                                                        className="form-control bg-light"
+                                                        name="contact_name"
                                                         placeholder="Nombres del contacto"
-                                                        onChange={handleChange} 
-                                                        autoFocus
+                                                        onChange={handleChange}
+
                                                     />
                                                 </div>
                                                 <div className="col-md-4 mb-2">
-                                                    <input 
-                                                        type="text" 
-                                                        className="form-control bg-light" 
-                                                        name="contact_lastname" 
+                                                    <input
+                                                        type="text"
+                                                        className="form-control bg-light"
+                                                        name="contact_lastname"
                                                         placeholder="Primer apellido del contacto"
-                                                        onChange={handleChange} 
-                                                        autoFocus
+                                                        onChange={handleChange}
+
                                                     />
                                                 </div>
                                                 <div className="col-md-4 mb-2">
-                                                    <input 
-                                                        type="text" 
-                                                        className="form-control bg-light" 
-                                                        name="contact_sec_lastname"                                                      
-                                                        placeholder="Segundo apellido del contacto"  
-                                                        onChange={handleChange} 
-                                                        autoFocus                                                      
+                                                    <input
+                                                        type="text"
+                                                        className="form-control bg-light"
+                                                        name="contact_sec_lastname"
+                                                        placeholder="Segundo apellido del contacto"
+                                                        onChange={handleChange}
+
                                                     />
                                                 </div>
                                                 <div className="col-md-6 mb-0">
-                                                    <input 
-                                                        type="text" 
-                                                        className="form-control bg-light" 
+                                                    <input
+                                                        type="text"
+                                                        className="form-control bg-light"
                                                         name="contact_relationship"
                                                         placeholder="Relación o parentesco"
-                                                        onChange={handleChange} 
-                                                        autoFocus                                                         
+                                                        onChange={handleChange}
+
                                                     />
                                                 </div>
                                                 <div className="col-md-6 mb-0">
-                                                    <input 
-                                                        type="number" 
-                                                        className="form-control bg-light" 
+                                                    <input
+                                                        type="number"
+                                                        className="form-control bg-light"
                                                         name="contact_phone"
-                                                        placeholder="Teléfono del contacto" 
-                                                        onChange={handleChange} 
-                                                        autoFocus                                                      
+                                                        placeholder="Teléfono del contacto"
+                                                        onChange={handleChange}
+
                                                     />
                                                 </div>
                                             </div>
 
 
-                                            <div className="col-md-4 mx-auto">
-                                                <button type="submit"className="btn btn-primary btn-block">Crear</button>
+                                            <div className="col-md-4 mt-2 mx-auto">
+                                                <button type="submit" className="btn btn-primary btn-block">Crear</button>
                                             </div>
-                                        </form>
+                                        </form>   
                                     </div>
                                 </div>
                                 <div className="mt-4">
@@ -394,8 +393,6 @@ const Signup = () => {
                 </div>
 
             </div>
-
-
         </>
     )
 }

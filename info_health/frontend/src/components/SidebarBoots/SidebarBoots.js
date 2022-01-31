@@ -45,7 +45,7 @@ const SidebarBoots = () => {
                                         
                                         {item.adding ? (
                                             <>
-                                                <button className="btn btn-toggle align-items-center rounded collapsed  " data-bs-toggle="collapse"
+                                                <button className="btn btn-toggle d-flex align-items-start rounded collapsed  " data-bs-toggle="collapse"
                                                     data-bs-target={'#' + item.iName + '-collapse'} aria-expanded="false">
                                                     <Link to={item.path} className={item.adding && ('disabled-link')} >
                                                         <i>{item.icon}</i>
@@ -69,7 +69,7 @@ const SidebarBoots = () => {
                                                 </div>
                                             </>
                                         ) : (
-                                            <button className="btn btn-toggle align-items-center rounded collapsed  " data-bs-toggle="collapse"
+                                            <button className="btn btn-toggle d-flex align-items-start rounded collapsed  " data-bs-toggle="collapse"
                                                 data-bs-target={'#' + item.iName + '-collapse'} aria-expanded="false" onClick={showSidebar}>
                                                 <Link to={item.path} className={item.adding && ('disabled-link')} >
                                                     <i>{item.icon}</i>
