@@ -8,6 +8,7 @@ import Menu from './components/Menu/Menu';
 import Layout from './components/Layout/Layout';
 import Signin from './components/Signin/Signin'
 import Signup from './components/Signup/Signup';
+import FormValidation from './components/FormValidation/FormValidation';
 import { BrowserRouter as Router, Switch,Route } from 'react-router-dom';
 import './components/SidebarBoots/SidebarBoots.css'
 //import 'bootstrap/dist/css/bootstrap.min.css';
@@ -27,6 +28,7 @@ function App() {
             <Route path='/login' render={() => {return(<Login/>)}}/>
             <Route path='/signin' render={() => {return(<Signin/>)} }/>
             <Route path='/signup' render={() => {return(<Signup/>)} }/>
+            <Route path='/validation' render={() => {return(<FormValidation/>)} }/>
           </Switch>
         </Layout>
         

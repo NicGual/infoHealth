@@ -1,10 +1,11 @@
 import React, { useState, useRef } from 'react';
 import { useForm } from "react-hook-form";
-import Cookies from 'universal-cookie'
-import Axios from 'axios'
-import image from '../../public/ips_logo.png'
+import Cookies from 'universal-cookie';
+import Axios from 'axios';
+import image from '../../public/ips_logo.png';
 
-const Signup = () => {
+const FormValidation = () => {
+
     const cookies = new Cookies()
     const initialState = {
         name: '',
@@ -59,6 +60,7 @@ const Signup = () => {
     password.current = watch("password", "");
 
     return (
+
         <>
             <div className="row">
                 <div className="col-md-4  col-xl-6 mx-auto">
@@ -76,19 +78,19 @@ const Signup = () => {
                                             <h6 className="font-weight-bold mt-0 mb-3">Información personal</h6>
                                             <div className="form-group row d-flex justify-content-center">
                                                 <div className="col-md-6 mb-2">
-                                                    <select
-                                                        className={errors.identification_type ? "form-select mr-sm-2 bg-light border-danger" : "form-select mr-sm-2 bg-light"}
-                                                        id="inlineFormCustomSelect"
-                                                        name="identification_type"
-                                                        autoFocus
-                                                        onChange={handleChange}
+                                                    <select 
+                                                    className={errors.identification_type ? "form-select mr-sm-2 bg-light border-danger" : "form-select mr-sm-2 bg-light"}
+                                                    id="inlineFormCustomSelect"
+                                                    name="identification_type"                                                     
+                                                    autoFocus
+                                                    onChange={handleChange}
                                                         {...register("identification_type", {
                                                             required: {
                                                                 value: true,
                                                                 message: "seleccione un tipo de identificacion"
                                                             }
                                                         })}
-
+                                                    
                                                     >
 
                                                         <option selected value="" disabled>--- Elija un tipo de identificación ---</option>
@@ -105,13 +107,13 @@ const Signup = () => {
 
                                                     </select>
                                                     {errors.identification_type && <p className='text-danger' >
-                                                        <small>
-                                                            {errors.identification_type.message}
-                                                        </small>
+                                                    <small>
+                                                        {errors.identification_type.message}
+                                                    </small>
                                                     </p>}
-
-
-
+                                                    
+                                                    
+                                                    
                                                 </div>
                                                 <div className="col-md-6 mb-2">
                                                     <input
@@ -127,7 +129,7 @@ const Signup = () => {
                                                                 message: "el campo es requerido"
                                                             }
                                                         })}
-
+                                                        
                                                     />
                                                     {errors.identification && <p><small className='text-danger'>{errors.identification.message}</small></p>}
                                                 </div>
@@ -167,7 +169,7 @@ const Signup = () => {
                                                 <div className="col-md-4 mb-0">
                                                     <input
                                                         type="text"
-                                                        className={errors.sec_lastname ? "form-control bg-light border-danger" : "form-control bg-light"}
+                                                        className={errors.sec_lastname ? "form-control bg-light border-danger" : "form-control bg-light" }
                                                         name="sec_lastname"
                                                         placeholder="Segundo apellido"
                                                         onChange={handleChange}
@@ -180,7 +182,7 @@ const Signup = () => {
                                                     />
                                                     {errors.sec_lastname && <p><small className='text-danger'>{errors.sec_lastname.message}</small></p>}
 
-
+                                                    
                                                 </div>
                                             </div>
 
@@ -191,7 +193,7 @@ const Signup = () => {
                                                     <label for="f_nac" className="mb-0">Fecha de nacimiento:</label>
                                                     <input
                                                         type="date"
-                                                        className={errors.f_nac ? "form-control bg-light mt-0 border-danger" : "form-control bg-light mt-0"}
+                                                        className={errors.f_nac ? "form-control bg-light mt-0 border-danger" : "form-control bg-light mt-0" }
                                                         id="f_nac"
                                                         name="date_of_bird"
                                                         placeholder="Fecha de nacimiento"
@@ -208,17 +210,17 @@ const Signup = () => {
                                                 </div>
                                                 <div className="col-md-6 mb-2">
                                                     <label for="genero" className="mb-0">Genero:</label>
-                                                    <select className={errors.gender ? "form-select mr-sm-2 bg-light border-danger" : "form-select mr-sm-2 bg-light mt-0"}
-                                                        id="gender"
+                                                    <select className={errors.gender ? "form-select mr-sm-2 bg-light border-danger"  : "form-select mr-sm-2 bg-light mt-0"}
+                                                        id="gender" 
                                                         name="gender"
                                                         onChange={handleChange}
                                                         {...register("gender", {
                                                             required: {
-                                                                value: true,
+                                                                value: true,                                                
                                                                 message: "seleccione su genero"
                                                             }
                                                         })}
-                                                    >
+                                                        >
                                                         <option value="" selected disabled>--- Seleccione su sexo ---</option>
                                                         <option value="Masculino">Masculino</option>
                                                         <option value="Femenino">Femenino</option>
@@ -228,17 +230,17 @@ const Signup = () => {
                                                 </div>
                                                 <div className="col-md-6 mb-2">
                                                     <label for="sangre" className="mb-0">Tipo de sangre:</label>
-                                                    <select className={errors.blood_type ? "form-select mr-sm-2 bg-light border-danger" : "form-select mr-sm-2 bg-light mt-0"}
-                                                        id="blood_type"
+                                                    <select className={errors.blood_type ? "form-select mr-sm-2 bg-light border-danger"  : "form-select mr-sm-2 bg-light mt-0"} 
+                                                        id="blood_type" 
                                                         name="blood_type"
                                                         onChange={handleChange}
                                                         {...register("blood_type", {
                                                             required: {
-                                                                value: true,
+                                                                value: true,                                                
                                                                 message: "seleccione su tipo de sangre"
                                                             }
                                                         })}
-                                                    >
+                                                        >
                                                         <option value="" selected disabled>--- seleccione su tipo de sangre ---</option>
                                                         <option value="A">A</option>
                                                         <option value="B">B</option>
@@ -249,17 +251,17 @@ const Signup = () => {
                                                 </div>
                                                 <div className="col-md-6 mb-2">
                                                     <label for="rh" className="mb-0">Rh:</label>
-                                                    <select className={errors.rh ? "form-select mr-sm-2 bg-light border-danger" : "form-select mr-sm-2 bg-light mt-0"}
-                                                        id="rh"
+                                                    <select className={errors.rh? "form-select mr-sm-2 bg-light border-danger"  : "form-select mr-sm-2 bg-light mt-0"} 
+                                                        id="rh" 
                                                         name="rh"
-                                                        onChange={handleChange}
+                                                        onChange={handleChange}                                                
                                                         {...register("rh", {
                                                             required: {
-                                                                value: true,
+                                                                value: true,                                                
                                                                 message: "seleccione su Rh"
                                                             }
                                                         })}
-                                                    >
+                                                        >
                                                         <option value="" selected disabled>--- Seleccione su Rh ---</option>
                                                         <option value="Positivo">Positivo</option>
                                                         <option value="Negativo">Negativo</option>
@@ -268,17 +270,17 @@ const Signup = () => {
                                                 </div>
                                                 <div className="col-md-6 mb-0">
                                                     <label for="marital_status" className="mb-0">Estado civil:</label>
-                                                    <select className={errors.marital_status ? "form-select mr-sm-2 bg-light border-danger" : "form-select mr-sm-2 bg-light mt-0"}
-                                                        id="marital_status"
+                                                    <select className={errors.marital_status? "form-select mr-sm-2 bg-light border-danger"  : "form-select mr-sm-2 bg-light mt-0"}
+                                                        id="marital_status" 
                                                         name="marital_status"
                                                         onChange={handleChange}
                                                         {...register("marital_status", {
                                                             required: {
-                                                                value: true,
+                                                                value: true,                                                
                                                                 message: "seleccione su Rh"
                                                             }
                                                         })}
-                                                    >
+                                                        >
                                                         <option value="" selected disabled>---Seleccione su estado civil ---</option>
                                                         <option value="Soltero">Soltero/a</option>
                                                         <option value="Casado">Casado/a</option>
@@ -293,14 +295,14 @@ const Signup = () => {
                                                     <label for="eps" className="mb-0">EPS:</label>
                                                     <input
                                                         type="text"
-                                                        id="EPS"
+                                                        id="EPS"    
                                                         name="EPS"
                                                         placeholder="EPS a la que está afiliado/a"
                                                         onChange={handleChange}
                                                         className={errors.EPS ? "form-control bg-light mt-0 border-danger" : "form-control bg-light mt-0"}
                                                         {...register("EPS", {
                                                             required: {
-                                                                value: true,
+                                                                value: true,                                                
                                                                 message: "ingrese su eps"
                                                             }
                                                         })}
@@ -318,17 +320,17 @@ const Signup = () => {
                                                         name="home_phone"
                                                         placeholder="Teléfono de la casa"
                                                         onChange={handleChange}
-                                                        className={errors.home_phone ? "form-control bg-light mt-0 border-danger" : "form-control bg-light mt-0"}
+                                                        className={errors.home_phone? "form-control bg-light mt-0 border-danger" : "form-control bg-light mt-0"}
                                                         {...register("home_phone", {
                                                             required: {
-                                                                value: true,
+                                                                value: true,                                                
                                                                 message: "ingrese su telefono"
                                                             }
                                                         })}
                                                     />
                                                     {errors.home_phone && <p><small className='text-danger'>{errors.home_phone.message}</small></p>}
 
-
+                                                    
                                                 </div>
                                                 <div className="col-md-6 mb-2">
                                                     <input
@@ -339,12 +341,12 @@ const Signup = () => {
                                                         className={errors.mobile_phone ? "form-control bg-light mt-0 border-danger" : "form-control bg-light mt-0"}
                                                         {...register("mobile_phone", {
                                                             required: {
-                                                                value: true,
+                                                                value: true,                                                
                                                                 message: "ingrese su telefono movil"
                                                             }
                                                         })}
                                                     />
-                                                    {errors.mobile_phone && <p><small className='text-danger'>{errors.mobile_phone.message}</small></p>}
+                                                    {errors.mobile_phone && <p><small className='text-danger'>{errors.mobile_phone.message}</small></p>}     
                                                 </div>
                                                 <div className="col-md-6 mb-2">
                                                     <input
@@ -355,12 +357,12 @@ const Signup = () => {
                                                         className={errors.work_phone ? "form-control bg-light mt-0 border-danger" : "form-control bg-light mt-0"}
                                                         {...register("work_phone", {
                                                             required: {
-                                                                value: true,
+                                                                value: true,                                                
                                                                 message: "ingrese su telefono del trabajo"
                                                             }
                                                         })}
                                                     />
-                                                    {errors.work_phone && <p><small className='text-danger'>{errors.work_phone.message}</small></p>}
+                                                    {errors.work_phone && <p><small className='text-danger'>{errors.work_phone.message}</small></p>} 
                                                 </div>
                                                 <div className="col-md-6 mb-2">
                                                     <input
@@ -371,7 +373,7 @@ const Signup = () => {
                                                         className={errors.address ? "form-control bg-light mt-0 border-danger" : "form-control bg-light mt-0"}
                                                         {...register("address", {
                                                             required: {
-                                                                value: true,
+                                                                value: true,                                                
                                                                 message: "ingrese su direccion"
                                                             }
                                                         })}
@@ -387,12 +389,12 @@ const Signup = () => {
                                                         className={errors.city ? "form-control bg-light mt-0 border-danger" : "form-control bg-light mt-0"}
                                                         {...register("city", {
                                                             required: {
-                                                                value: true,
+                                                                value: true,                                                
                                                                 message: "ingrese su ciudad"
                                                             }
                                                         })}
                                                     />
-                                                    {errors.city && <p><small className='text-danger'>{errors.city.message}</small></p>}
+                                                    {errors.city && <p><small className='text-danger'>{errors.city.message}</small></p>} 
                                                 </div>
                                                 <div className="col-md-6 mb-0">
                                                     <input
@@ -403,12 +405,12 @@ const Signup = () => {
                                                         className={errors.department ? "form-control bg-light mt-0 border-danger" : "form-control bg-light mt-0"}
                                                         {...register("department", {
                                                             required: {
-                                                                value: true,
+                                                                value: true,                                                
                                                                 message: "ingrese su departamento"
                                                             }
                                                         })}
                                                     />
-                                                    {errors.department && <p><small className='text-danger'>{errors.department.message}</small></p>}
+                                                    {errors.department && <p><small className='text-danger'>{errors.department.message}</small></p>}   
                                                 </div>
                                             </div>
 
@@ -434,7 +436,7 @@ const Signup = () => {
                                                         className={errors.email ? "form-control bg-light mt-0 border-danger" : "form-control bg-light mt-0"}
                                                         {...register("email", {
                                                             required: {
-                                                                value: true,
+                                                                value: true,                                                
                                                                 message: "ingrese su email"
                                                             },
                                                             pattern: {
@@ -452,15 +454,15 @@ const Signup = () => {
                                                         name="password"
                                                         placeholder="Contraseña"
                                                         onChange={handleChange}
-                                                        className={errors.password ? "form-control bg-light mt-0 border-danger" : "form-control bg-light mt-0"}
+                                                        className={errors.password? "form-control bg-light mt-0 border-danger" : "form-control bg-light mt-0"}
                                                         {...register("password", {
                                                             required: {
-                                                                value: true,
+                                                                value: true,                                                
                                                                 message: "ingrese su contraseña"
                                                             }
                                                         })}
                                                     />
-                                                    {errors.password && <p><small className='text-danger'>{errors.password.message}</small></p>}
+                                                    {errors.password && <p><small className='text-danger'>{errors.password.message}</small></p>}  
                                                 </div>
                                                 <div className="col-md-6 mb-0">
                                                     <input
@@ -468,16 +470,16 @@ const Signup = () => {
                                                         name="confirm_password"
                                                         placeholder="Confirmar contraseña"
                                                         onChange={handleChange}
-                                                        className={errors.confirm_password ? "form-control bg-light mt-0 border-danger" : "form-control bg-light mt-0"}
+                                                        className={errors.confirm_password? "form-control bg-light mt-0 border-danger" : "form-control bg-light mt-0"}
                                                         {...register("confirm_password", {
                                                             required: {
-                                                                value: true,
+                                                                value: true,                                                
                                                                 message: "ingrese nuevamente su contraseña"
                                                             },
-                                                            validate: (value) => value === password.current || "las contraseñas no coinciden"
+                                                            validate: (value) => value === password.current || "las contraseñas no coinciden"                                                           
                                                         })}
                                                     />
-                                                    {errors.confirm_password && <p><small className='text-danger'>{errors.confirm_password.message}</small></p>}
+                                                    {errors.confirm_password && <p><small className='text-danger'>{errors.confirm_password.message}</small></p>}  
                                                 </div>
                                             </div>
 
@@ -490,15 +492,15 @@ const Signup = () => {
                                                         name="contact_name"
                                                         placeholder="Nombres del contacto"
                                                         onChange={handleChange}
-                                                        className={errors.contact_name ? "form-control bg-light mt-0 border-danger" : "form-control bg-light mt-0"}
+                                                        className={errors.contact_name? "form-control bg-light mt-0 border-danger" : "form-control bg-light mt-0"}
                                                         {...register("contact_name", {
                                                             required: {
-                                                                value: true,
+                                                                value: true,                                                
                                                                 message: "ingrese el nombre de su contacto"
                                                             }
                                                         })}
                                                     />
-                                                    {errors.contact_name && <p><small className='text-danger'>{errors.contact_name.message}</small></p>}
+                                                    {errors.contact_name && <p><small className='text-danger'>{errors.contact_name.message}</small></p>}  
                                                 </div>
                                                 <div className="col-md-4 mb-2">
                                                     <input
@@ -506,15 +508,15 @@ const Signup = () => {
                                                         name="contact_lastname"
                                                         placeholder="Primer apellido del contacto"
                                                         onChange={handleChange}
-                                                        className={errors.contact_lastname ? "form-control bg-light mt-0 border-danger" : "form-control bg-light mt-0"}
+                                                        className={errors.contact_lastname? "form-control bg-light mt-0 border-danger" : "form-control bg-light mt-0"}
                                                         {...register("contact_lastname", {
                                                             required: {
-                                                                value: true,
+                                                                value: true,                                                
                                                                 message: "ingrese el apellido de su contacto"
                                                             }
                                                         })}
                                                     />
-                                                    {errors.contact_lastname && <p><small className='text-danger'>{errors.contact_lastname.message}</small></p>}
+                                                    {errors.contact_lastname && <p><small className='text-danger'>{errors.contact_lastname.message}</small></p>}   
                                                 </div>
                                                 <div className="col-md-4 mb-2">
                                                     <input
@@ -522,10 +524,10 @@ const Signup = () => {
                                                         name="contact_sec_lastname"
                                                         placeholder="Segundo apellido del contacto"
                                                         onChange={handleChange}
-                                                        className={errors.contact_sec_lastname ? "form-control bg-light mt-0 border-danger" : "form-control bg-light mt-0"}
+                                                        className={errors.contact_sec_lastname? "form-control bg-light mt-0 border-danger" : "form-control bg-light mt-0"}
                                                         {...register("contact_sec_lastname", {
                                                             required: {
-                                                                value: true,
+                                                                value: true,                                                
                                                                 message: "ingrese el segundo apellido de su contacto"
                                                             }
                                                         })}
@@ -538,15 +540,15 @@ const Signup = () => {
                                                         name="contact_relationship"
                                                         placeholder="Relación o parentesco"
                                                         onChange={handleChange}
-                                                        className={errors.contact_relationship ? "form-control bg-light mt-0 border-danger" : "form-control bg-light mt-0"}
+                                                        className={errors.contact_relationship? "form-control bg-light mt-0 border-danger" : "form-control bg-light mt-0"}
                                                         {...register("contact_relationship", {
                                                             required: {
-                                                                value: true,
+                                                                value: true,                                                
                                                                 message: "ingrese su relacion con el contacto"
                                                             }
                                                         })}
                                                     />
-                                                    {errors.contact_relationship && <p><small className='text-danger'>{errors.contact_relationship.message}</small></p>}
+                                                    {errors.contact_relationship && <p><small className='text-danger'>{errors.contact_relationship.message}</small></p>}   
                                                 </div>
                                                 <div className="col-md-6 mb-0">
                                                     <input
@@ -554,15 +556,15 @@ const Signup = () => {
                                                         name="contact_phone"
                                                         placeholder="Teléfono del contacto"
                                                         onChange={handleChange}
-                                                        className={errors.contact_phone ? "form-control bg-light mt-0 border-danger" : "form-control bg-light mt-0"}
+                                                        className={errors.contact_phone? "form-control bg-light mt-0 border-danger" : "form-control bg-light mt-0"}
                                                         {...register("contact_phone", {
                                                             required: {
-                                                                value: true,
+                                                                value: true,                                                
                                                                 message: "ingrese el telefono de su contacto"
                                                             }
                                                         })}
                                                     />
-                                                    {errors.contact_phone && <p><small className='text-danger'>{errors.contact_phone.message}</small></p>}
+                                                    {errors.contact_phone && <p><small className='text-danger'>{errors.contact_phone.message}</small></p>}   
                                                 </div>
                                             </div>
 
@@ -589,9 +591,8 @@ const Signup = () => {
 
             </div>
         </>
+
     )
 }
 
-
-
-export default Signup
+export default FormValidation
