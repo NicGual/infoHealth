@@ -21,10 +21,12 @@ const login = async (req, res) => {
     
 };
 const singup = async(req, res) => {
-    const {identification_type,identification,name,lastname,sec_lastname,date_of_bird,gender,blood_type,
+    const {identification_type,identification,name,lastname,sec_lastname,date_of_birth,gender,blood_type,
         rh,marital_status,EPS,home_phone,mobile_phone,work_phone,address,city,department,role,email,
         password,confirm_password,contact_name,contact_lastname,contact_sec_lastname,contact_relationship,contact_phone
         } = req.body
+        console.log(req.body)
+        console.log(password)
     /*const {name, email, password, confirmpassword, role} = req.body*/
     const validation = await User.findOne({email: email})
     if (password.length <4 ) {
@@ -45,7 +47,7 @@ const singup = async(req, res) => {
     }
     if (!validation) { 
 
-        data={identification_type,identification,name,lastname,sec_lastname,date_of_bird,gender,blood_type,
+        data={identification_type,identification,name,lastname,sec_lastname,date_of_birth,gender,blood_type,
             rh,marital_status,EPS,home_phone,mobile_phone,work_phone,address,city,department,role,email,
             password,contact_name,contact_lastname,contact_sec_lastname,contact_relationship,contact_phone};
         const newUser =  new User (data)

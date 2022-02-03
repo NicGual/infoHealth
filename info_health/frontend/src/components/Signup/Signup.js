@@ -22,17 +22,18 @@ const Signup = () => {
         window.location.href = './signin'
     }
     const formSubmit = async (e) => {
-        e.preventDefault()
+        //e.preventDefault()
         try {
             const url = 'http://localhost:4000/auth/singup'
-
+            console.log(e)
             const { data } = await Axios.post(
                 url,
                 {
-                    ...form
+                    ...e
 
                 }
             );
+            
             if (data.status === 'Correct Password') {
                 const userData = data.user;
                 cookies.set('_id', userData._id, { path: "/" });
@@ -71,7 +72,7 @@ const Signup = () => {
                             <div className="card-body">
                                 <div className="card ">
                                     <div className="card-body">
-                                        <form onSubmit={handleSubmit(formSubmit)} className="justify-content-center" method="POST" noValidate>
+                                        <form onSubmit={handleSubmit((data) => formSubmit(data))} className="justify-content-center" method="POST" noValidate>
 
                                             <h6 className="font-weight-bold mt-0 mb-3">Información personal</h6>
                                             <div className="form-group row d-flex justify-content-center">
@@ -192,11 +193,11 @@ const Signup = () => {
                                                     <input
                                                         type="date"
                                                         className={errors.f_nac ? "form-control bg-light mt-0 border-danger" : "form-control bg-light mt-0"}
-                                                        id="f_nac"
-                                                        name="date_of_bird"
+                                                        id="date_of_birth"
+                                                        name="date_of_birth"
                                                         placeholder="Fecha de nacimiento"
                                                         onChange={handleChange}
-                                                        {...register("f_nac", {
+                                                        {...register("date_of_birth", {
                                                             required: {
                                                                 value: true,
                                                                 valueAsDate: true,
@@ -416,14 +417,25 @@ const Signup = () => {
                                             <h6 className="font-weight-bold mt-2 mb-1">Información de sesión</h6>
                                             <div className="form-group row d-flex justify-content-center">
                                                 <div className="col-md-6 mb-2">
-                                                    <select className="form-select mr-sm-2" id="role" name="role"
-                                                        onChange={handleChange}>
+                                                    <select       
+                                                        id="role" 
+                                                        name="role"
+                                                        onChange={handleChange}
+                                                        className={errors.role ? "form-select mr-sm-2 bg-light border-danger" : "form-select mr-sm-2 bg-light mt-0"}
+                                                        {...register("role", {
+                                                            required: {
+                                                                value: true,
+                                                                message: "seleccione su tipo de usuario"
+                                                            }
+                                                        })}
+                                                        >
                                                         <option value="" selected disabled>--- Elija un tipo de usuario ---</option>
                                                         <option value="Paciente">Paciente</option>
                                                         <option value="Empleado">Empleado</option>
                                                         <option value="Medico">Médico</option>
                                                         <option value="Admin">Administrador de la plataforma</option>
                                                     </select>
+                                                    {errors.role && <p><small className='text-danger'>{errors.role.message}</small></p>}
                                                 </div>
                                                 <div className="col-md-6 mb-2">
                                                     <input

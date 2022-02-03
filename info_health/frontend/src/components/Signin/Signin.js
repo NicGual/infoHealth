@@ -25,17 +25,20 @@ const Signin = () => {
     }
 
     const formSubmit = async (e) => {
-        e.preventDefault()
+        //e.preventDefault()
         try {
             const url = 'http://localhost:4000/auth/singin'
 
             const { data } = await Axios.post(
                 url,
                 {
-                    ...form
+                    ...e
 
                 }
             );
+            console.log(e)
+            console.log(data)
+            console.log(form)
             if (data.status === 'Correct Password') {
                 const userData = data.user;
                 cookies.set('_id', userData._id, { path: "/" });
@@ -64,7 +67,7 @@ const Signin = () => {
             window.location.href = "./menu"
         }
     }
-    const { register, handleSubmit, formState: { errors }, watch } = useForm();
+    const { register, handleSubmit, formState: { errors }} = useForm();
     return (
         <>
             {verification()}
