@@ -1,20 +1,14 @@
 import React, { useState } from "react";
 import { Link } from 'react-router-dom'
-import Cookies from "universal-cookie";
 import { SidebarBootsData as SidebarData } from './SidebarBootsData'
 import * as FaIcons from 'react-icons/fa'
 import * as AiIcons from 'react-icons/ai'
-const SidebarBoots = () => {
+const SidebarBoots = () => {    
     const [sidebar, setSidebar] = useState(false);
     const showSidebar = () => setSidebar(!sidebar);
-    const cookies = new Cookies();
     const logOut = () =>{
-        cookies.remove('_id', {path:"/"});
-        cookies.remove('name', {path:"/"});
-        cookies.remove('email', {path:"/"});
-        cookies.remove('password', {path:"/"});
-        cookies.remove('usertype', {path:"/"});
-        window.location.href='./login'
+        window.localStorage.removeItem('loggedUser')
+        window.location.href='./signin'
     }
     
     return (
@@ -70,8 +64,8 @@ const SidebarBoots = () => {
                                             </>
                                         ) : (
                                             <button className="btn btn-toggle d-flex align-items-start rounded collapsed  " data-bs-toggle="collapse"
-                                                data-bs-target={'#' + item.iName + '-collapse'} aria-expanded="false" onClick={showSidebar}>
-                                                <Link to={item.path} className={item.adding && ('disabled-link')} >
+                                                data-bs-target={'#' + item.iName + '-collapse'} aria-expanded="false" >
+                                                <Link to={item.path} className={item.adding && ('disabled-link')} onClick={showSidebar}>
                                                     <i>{item.icon}</i>
                                                     <span>{item.tittle}</span>
                                                 </Link>
@@ -94,10 +88,10 @@ const SidebarBoots = () => {
                             </button>
                             <div className="collapse" id="account-collapse">
                                 <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                    <li><a href="#" className="link-dark rounded">New...</a></li>
-                                    <li><a href="#" className="link-dark rounded">Profile</a></li>
-                                    <li><a href="#" className="link-dark rounded">Settings</a></li>
-                                    <li><a href="#" className="link-dark rounded">Sign out</a></li>
+                                    <li><a href="./" className="link-dark rounded" id="new">New...</a></li>
+                                    <li><a href="./" className="link-dark rounded" id="profile">Profile</a></li>
+                                    <li><a href="./" className="link-dark rounded" id="settings">Settings</a></li>
+                                    <li><a href="./" className="link-dark rounded" id="signin">Sign out</a></li>
                                 </ul>
                             </div>
                             <button className="btn btn-toggle align-items-center rounded collapsed" onClick={logOut}>

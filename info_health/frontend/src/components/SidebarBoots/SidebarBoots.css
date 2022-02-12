@@ -54,7 +54,7 @@ body {
   .btn-toggle:hover,
   .btn-toggle:focus {
     color: rgba(0, 0, 0, .85);
-    background-color: #03f5ac;
+    background-color: #297CEB ;
   }
   
   .btn-toggle::before {

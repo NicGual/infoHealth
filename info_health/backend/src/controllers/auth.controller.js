@@ -1,9 +1,10 @@
 const crypto = require('crypto');
-const User = require('../models/User')
+const User = require('../models/User');
+const jwt = require('jsonwebtoken');
 const login = async (req, res) => {
         const {email, password} = req.body 
         const user = await User.findOne({email: email});
-        console.log(user);
+        console.log(user)
         if(!user) {
             res.json({user: 'Not Found'});
         }  
@@ -12,7 +13,11 @@ const login = async (req, res) => {
             const match = await user.matchPassword(password,user.password);
             console.log(match);
             if(match) {
-                res.json({user:user,status:'Correct Password'})
+                jwt.sign({user}, 'userKey', (err, token) => {
+
+                    res.json({user,token,status:'Correct Password'})
+                })
+                
             }
             else {
                 res.json({status: 'Incorrect Password'})
@@ -53,12 +58,12 @@ const singup = async(req, res) => {
         const newUser =  new User (data)
         newUser.password = await newUser.encryptPassword(password)
         await newUser.save();
-        res.json({name, email, password, role})
+        res.json({name, email, password, role, status: 'User Created'})
 
     }
     else {
         
-        res.json({response:'Email allready in use'})
+        res.json({status:'Email allready in use'})
 
     }
 };

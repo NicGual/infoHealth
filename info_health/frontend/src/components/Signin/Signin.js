@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState} from 'react';
+import useAuth from '../../hooks/useAuth';
 import { useForm } from 'react-hook-form';
-import Cookies from 'universal-cookie'
-import Axios from 'axios'
-import image from '../../public/ips_logo.png'
+import Axios from 'axios';
+import image from '../../public/ips_logo.png';
 
-const cookies = new Cookies();
+const  jwt = require('jsonwebtoken') 
 const initialState = {
     name: '',
     surname: '',
@@ -15,9 +15,10 @@ const initialState = {
 };
 const Signin = () => {
 
-    const [form, setForm] = useState(initialState)
+    const {auth, setAuth} = useAuth();
+    const [form, setForm] = useState(initialState);
     const handleChange = (e) => {
-        setForm({ ...form, [e.target.name]: e.target.value })
+        setForm({ ...form, [e.target.name]: e.target.value });
     }
 
     const switchMode = () => {
@@ -36,18 +37,14 @@ const Signin = () => {
 
                 }
             );
-            console.log(e)
-            console.log(data)
-            console.log(form)
-            if (data.status === 'Correct Password') {
-                const userData = data.user;
-                cookies.set('_id', userData._id, { path: "/" });
-                cookies.set('name', userData.name, { path: "/" });
-                cookies.set('email', userData.email, { path: "/" });
-                cookies.set('password', userData.pasword, { path: "/" });
-                cookies.set('usertype', userData.usertype, { path: "/" });
+            const userData = data.user;
+            const userToken = data.token;
+            setAuth({userData,userToken});
+            if (data.status === 'Correct Password') {                
+                window.localStorage.setItem(
+                    'loggedUser', JSON.stringify(userToken)
+                );
                 window.location.href = './menu'
-
 
             } else {
                 if (data.name) {
@@ -63,9 +60,17 @@ const Signin = () => {
 
     }
     const verification = () => {
-        if (cookies.get('name')) {
-            window.location.href = "./menu"
-        }
+        const userToken = window.localStorage.getItem('loggedUser')
+        jwt.verify(userToken,'userKey', (error, authData) => {
+            if(authData){
+                window.location.href = "./results"
+                return(
+                    <div >{authData}</div>
+                )
+            }
+
+        })
+        
     }
     const { register, handleSubmit, formState: { errors }} = useForm();
     return (

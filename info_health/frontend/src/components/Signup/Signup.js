@@ -1,11 +1,9 @@
 import React, { useState, useRef } from 'react';
 import { useForm } from "react-hook-form";
-import Cookies from 'universal-cookie'
 import Axios from 'axios'
 import image from '../../public/ips_logo.png'
 
 const Signup = () => {
-    const cookies = new Cookies()
     const initialState = {
         name: '',
         surname: '',
@@ -34,21 +32,12 @@ const Signup = () => {
                 }
             );
             
-            if (data.status === 'Correct Password') {
-                const userData = data.user;
-                cookies.set('_id', userData._id, { path: "/" });
-                cookies.set('name', userData.name, { path: "/" });
-                cookies.set('email', userData.email, { path: "/" });
-                cookies.set('password', userData.pasword, { path: "/" });
-                cookies.set('usertype', userData.usertype, { path: "/" });
-                window.location.href = './menu'
+            if (data.status === 'User Created') {                                              
+                window.location.href = './signin'
             } else {
-                if (data.name) {
-                    window.location.href = './login'
-                } else {
-                    alert('user or password does not match')
-                }
-
+                if (data.status === 'Email allready in use') {
+                    alert('Email allready in use')
+                } 
             }
         } catch (error) {
             console.log(error);

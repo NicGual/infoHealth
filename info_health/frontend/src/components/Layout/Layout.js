@@ -1,15 +1,29 @@
 import React from "react";
-import Cookies from "universal-cookie";
 import SidebarBoots from "../SidebarBoots/SidebarBoots";
-
-const cookies = new Cookies();
+//const jwt = require('jsonwebtoken')
 const Layout = ({children}) =>{
 
     const verification = () =>{
-        if(cookies.get('name')) {
-            console.log('verification')
+
+        /*
+        const userToken = window.localStorage.getItem('loggedUser')
+        jwt.verify(JSON.parse(userToken),'userKey', (error, authData) => {
+            if(error){                
+                alert(error)
+            }
+            if(authData){
+                console.log(authData)
+                return(authData)               
+            }
+        })
+        */
+        
+        const userToken = window.localStorage.getItem('loggedUser')
+        if(userToken) {
+            
             return(<SidebarBoots/>)
             }
+        
     }
     return(
         <div>
