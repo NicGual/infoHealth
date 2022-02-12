@@ -1,6 +1,5 @@
 import React from 'react';
 import * as FaIcons from 'react-icons/fa'
-import * as AiIcons from 'react-icons/ai'
 import * as IoIcons from 'react-icons/io'
 import * as RiIcons from 'react-icons/ri'
 import * as GoIcons from 'react-icons/go'
@@ -20,7 +19,8 @@ export const SidebarBootsData = [
         path: '/resultados',
         icon: <IoIcons.IoIosPaper/>,
         cName: 'list-group link-dark rounded',
-        iName: 'resultados'
+        iName: 'resultados',
+        
         
     },
     {

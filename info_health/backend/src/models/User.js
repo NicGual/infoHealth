@@ -23,7 +23,7 @@ const userSchema = new Schema({
     },
 
     ////////////// Información general ///////////////////
-    date_of_bird: {
+    date_of_birth: {
         type: String,
         required: true,
     },
