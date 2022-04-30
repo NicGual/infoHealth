@@ -1,34 +1,38 @@
-import React from "react";
+import React, {useEffect} from "react";
+import { Outlet } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 import SidebarBoots from "../SidebarBoots/SidebarBoots";
 //const jwt = require('jsonwebtoken')
-const Layout = ({children}) =>{
+const Layout = () =>{
+    
+    const {auth, setAuth} = useAuth();
 
-    const verification = () =>{
-
-        /*
-        const userToken = window.localStorage.getItem('loggedUser')
-        jwt.verify(JSON.parse(userToken),'userKey', (error, authData) => {
-            if(error){                
-                alert(error)
-            }
-            if(authData){
-                console.log(authData)
-                return(authData)               
-            }
-        })
-        */
-        
-        const userToken = window.localStorage.getItem('loggedUser')
-        if(userToken) {
+    useEffect(() => {
+        try{
+            const isAuthenticated = Boolean(JSON.parse(window.localStorage.getItem('isAuthenticated')));
+            const userData = JSON.parse(window.localStorage.getItem('userData'));
+            //userData.isAuthenticated = isAuthenticated; 
+            if (userData.role === 'patient' || userData.role === 'Paciente') {
+                userData.role = ['2001']
+            }else{
+                userData.role = [userData.role];
+            }            
+            setAuth(prev =>{
+                return {...prev,userData,isAuthenticated}});
+            console.log(auth)
             
-            return(<SidebarBoots/>)
-            }
-        
-    }
+        }
+        catch (error) {
+            console.log(error)
+        }
+    },[auth.isAuthenticated])
+
+    
     return(
         <div>
-            {verification()}
-            {children}
+            {auth.isAuthenticated ? <SidebarBoots SidebarData={auth.sidebarData}/> : ""}
+            <Outlet/>
+         
         </div>
     );
 }

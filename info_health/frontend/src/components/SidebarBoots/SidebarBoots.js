@@ -1,20 +1,24 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom'
-import { SidebarBootsData as SidebarData } from './SidebarBootsData'
-import * as FaIcons from 'react-icons/fa'
-import * as AiIcons from 'react-icons/ai'
-const SidebarBoots = () => {    
+import { Link } from 'react-router-dom';
+import IconSelector from "../../utils/IconSelector";
+import {FaBars} from 'react-icons/fa';
+import {AiOutlineClose} from 'react-icons/ai';
+
+
+const SidebarBoots = (props) => { 
+   
     const [sidebar, setSidebar] = useState(false);
     const showSidebar = () => setSidebar(!sidebar);
     const logOut = () =>{
         window.localStorage.removeItem('loggedUser')
+        window.localStorage.removeItem('isAuthenticated')
         window.location.href='./signin'
     }
     
     return (
-        <>
+        <>  
             <div className='navbar'>
-                <FaIcons.FaBars className='menu-bars ' onClick={showSidebar} />
+                <FaBars className='menu-bars ' onClick={showSidebar} />
             </div>
             <div className="flex-shrink-0 p-3 bg-white" style={{ width: '300px' }}>
                 
@@ -25,14 +29,14 @@ const SidebarBoots = () => {
                     
                         <li className='nav-bar-toggle'>
                             <Link to={window.location} className='menu-bars'>
-                                <AiIcons.AiOutlineClose onClick={showSidebar} />
+                                <AiOutlineClose onClick={showSidebar} />
                             </Link>
                         </li>
                         <a href="/" className="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
                             <span className="fs-5 fw-semibold">Menu</span>
                         </a>
                         {
-                            SidebarData.map((item, index) => {
+                            props.SidebarData.map((item, index) => {
 
                                 return (
                                     <>
@@ -42,15 +46,15 @@ const SidebarBoots = () => {
                                                 <button className="btn btn-toggle d-flex align-items-start rounded collapsed  " data-bs-toggle="collapse"
                                                     data-bs-target={'#' + item.iName + '-collapse'} aria-expanded="false">
                                                     <Link to={item.path} className={item.adding && ('disabled-link')} >
-                                                        <i>{item.icon}</i>
+                                                        <i>{IconSelector(item.icon) }</i>
                                                         <span>{item.tittle}</span>
                                                     </Link>
                                                 </button>
                                                 <div className={!sidebar ? "collapsed" : "collapse"} id={item.iName + "-collapse"}>
                                                     <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
 
-                                                        {item.adding.map((element) => (
-                                                            <li key={index} className={item.cName} onClick={showSidebar}>
+                                                        {item.adding.map((element,elementIndex) => (
+                                                            <li key={elementIndex} className={item.cName} onClick={showSidebar}>
                                                                 <Link to={element[1]} >
                                                                     <span key={element[0]}>{element[0]}</span>
                                                                 </Link>
@@ -64,18 +68,14 @@ const SidebarBoots = () => {
                                             </>
                                         ) : (
                                             <button className="btn btn-toggle d-flex align-items-start rounded collapsed  " data-bs-toggle="collapse"
-                                                data-bs-target={'#' + item.iName + '-collapse'} aria-expanded="false" >
-                                                <Link to={item.path} className={item.adding && ('disabled-link')} onClick={showSidebar}>
-                                                    <i>{item.icon}</i>
+                                                data-bs-target={'#' + item.iName + '-collapse'} aria-expanded="false" onClick={showSidebar}>
+                                                <Link to={item.path} className={item.adding && ('disabled-link')} >
+                                                    <i>{IconSelector(item.icon)}</i>
                                                     <span>{item.tittle}</span>
                                                 </Link>
                                             </button>
                                         )}
-
-
                                     </>
-
-
                                 );
                             }
                             )
@@ -83,17 +83,6 @@ const SidebarBoots = () => {
 
                         <li className="border-top my-3"></li>
                         <li className="mb-1">
-                            <button className="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-                                Account
-                            </button>
-                            <div className="collapse" id="account-collapse">
-                                <ul className="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                                    <li><a href="./" className="link-dark rounded" id="new">New...</a></li>
-                                    <li><a href="./" className="link-dark rounded" id="profile">Profile</a></li>
-                                    <li><a href="./" className="link-dark rounded" id="settings">Settings</a></li>
-                                    <li><a href="./" className="link-dark rounded" id="signin">Sign out</a></li>
-                                </ul>
-                            </div>
                             <button className="btn btn-toggle align-items-center rounded collapsed" onClick={logOut}>
                                 Log out
                             </button>

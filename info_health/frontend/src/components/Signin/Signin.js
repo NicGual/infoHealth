@@ -3,8 +3,8 @@ import useAuth from '../../hooks/useAuth';
 import { useForm } from 'react-hook-form';
 import Axios from 'axios';
 import image from '../../public/ips_logo.png';
-
-const  jwt = require('jsonwebtoken') 
+import {useNavigate, useLocation} from 'react-router-dom'
+ 
 const initialState = {
     name: '',
     surname: '',
@@ -15,14 +15,18 @@ const initialState = {
 };
 const Signin = () => {
 
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
     const {auth, setAuth} = useAuth();
     const [form, setForm] = useState(initialState);
+    const { register, handleSubmit, formState: { errors }} = useForm();
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     }
 
     const switchMode = () => {
-        window.location.href = './signup'
+        navigate('../signup')
     }
 
     const formSubmit = async (e) => {
@@ -30,21 +34,19 @@ const Signin = () => {
         try {
             const url = 'http://localhost:4000/auth/singin'
 
-            const { data } = await Axios.post(
-                url,
-                {
-                    ...e
-
-                }
-            );
-            const userData = data.user;
-            const userToken = data.token;
-            setAuth({userData,userToken});
+            const { data } = await Axios.post(url, {  ...e  });
+            const userData = data.userInfo;
+            const userToken = data.bearerAccessToken;
+            const sidebarData = data.userSidebar;
+            setAuth({userData,userToken,isAuthenticated: true,sidebarData});
+            console.log(auth)
             if (data.status === 'Correct Password') {                
                 window.localStorage.setItem(
-                    'loggedUser', JSON.stringify(userToken)
-                );
-                window.location.href = './menu'
+                    'loggedUser', JSON.stringify(userToken));
+                window.localStorage.setItem('isAuthenticated', 'true');
+                window.localStorage.setItem('userData', JSON.stringify(userData));
+                //navigate('../menu')
+                navigate(from, {replace: true})
 
             } else {
                 if (data.name) {
@@ -52,30 +54,16 @@ const Signin = () => {
                 } else {
                     alert('user or password does not match')
                 }
-
             }
         } catch (error) {
             console.log(error);
         }
 
     }
-    const verification = () => {
-        const userToken = window.localStorage.getItem('loggedUser')
-        jwt.verify(userToken,'userKey', (error, authData) => {
-            if(authData){
-                window.location.href = "./results"
-                return(
-                    <div >{authData}</div>
-                )
-            }
-
-        })
-        
-    }
-    const { register, handleSubmit, formState: { errors }} = useForm();
+    
     return (
         <>
-            {verification()}
+            
             <div className="row">
                 <div className="col-md-4  col-xl-5 mx-auto">
                     <div className="card mt-4 text-center">
