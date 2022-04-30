@@ -77,7 +77,8 @@ const userSchema = new Schema({
         type: String,
         required: true,
         default: "patient",
-        enum: ["Admin", "Medico", "Empleado", "Paciente"]
+        enum: ["2001","2002","2003","2004"]
+        //enum: ["Admin", "Medico", "Empleado", "Paciente"]
     },
 
     email: {
@@ -111,6 +112,9 @@ const userSchema = new Schema({
     last_login_date: {
         type: Date,
         default: Date.now()
+    },
+    refreshToken:{
+        type: String
     }
 }, { timestamps: true });
 

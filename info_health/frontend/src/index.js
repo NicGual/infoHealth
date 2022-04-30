@@ -13,9 +13,11 @@ ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
       <BrowserRouter>
-        <App />
+        
+          <App />
+         
       </BrowserRouter>
-    </AuthProvider>
+    </AuthProvider> 
   </React.StrictMode>,
   document.getElementById('root')
 );

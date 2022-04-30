@@ -1,9 +1,11 @@
 import React, { useState, useRef } from 'react';
 import { useForm } from "react-hook-form";
-import Axios from 'axios'
-import image from '../../public/ips_logo.png'
+import {useNavigate} from 'react-router-dom';
+import Axios from 'axios';
+import image from '../../public/ips_logo.png';
 
 const Signup = () => {
+    const navigate = useNavigate();
     const initialState = {
         name: '',
         surname: '',
@@ -17,7 +19,7 @@ const Signup = () => {
         setForm({ ...form, [e.target.name]: e.target.value })
     }
     const switchMode = () => {
-        window.location.href = './signin'
+        navigate('../signin')
     }
     const formSubmit = async (e) => {
         //e.preventDefault()
@@ -420,7 +422,7 @@ const Signup = () => {
                                                         >
                                                         <option value="" selected disabled>--- Elija un tipo de usuario ---</option>
                                                         <option value="Paciente">Paciente</option>
-                                                        <option value="Empleado">Empleado</option>
+                                                        <option value="Laboratorista">Laboratorista</option>
                                                         <option value="Medico">Médico</option>
                                                         <option value="Admin">Administrador de la plataforma</option>
                                                     </select>
