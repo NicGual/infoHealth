@@ -1,18 +1,23 @@
 import React, { useState } from "react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import IconSelector from "../../utils/IconSelector";
 import {FaBars} from 'react-icons/fa';
 import {AiOutlineClose} from 'react-icons/ai';
-
+import useLogout from "../../hooks/useLogout";
 
 const SidebarBoots = (props) => { 
    
     const [sidebar, setSidebar] = useState(false);
     const showSidebar = () => setSidebar(!sidebar);
-    const logOut = () =>{
-        window.localStorage.removeItem('loggedUser')
-        window.localStorage.removeItem('isAuthenticated')
-        window.location.href='./signin'
+    const logout = useLogout();
+    const navigate = useNavigate();
+    const logOut = async () =>{
+        await logout();
+        // window.localStorage.removeItem('loggedUser')
+        // window.localStorage.removeItem('isAuthenticated')
+        // window.localStorage.removeItem('userData')
+        // window.localStorage.removeItem('sidebarData')
+        // navigate('../signin') 
     }
     
     return (

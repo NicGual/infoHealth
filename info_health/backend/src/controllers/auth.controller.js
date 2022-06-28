@@ -10,8 +10,6 @@ const login = async (req, res) => {
 
         const {email, password} = req.body 
         const user = await User.findOne({email: email});
-        // const pathToPrivKey = path.join(__dirname, '..','..', 'id_rsa_priv.pem');
-        // const PRIV_KEY = fs.readFileSync(pathToPrivKey,'utf8');
         const REFRESH_PRIV_KEY = process.env.REFRESH_TOKEN_SECRET;
         const ACCESS_PRIV_KEY = process.env.ACCESS_TOKEN_SECRET;
         console.log(user)
@@ -23,15 +21,16 @@ const login = async (req, res) => {
             const match = await user.matchPassword(password,user.password);
             console.log(match);
             if(match) {
-                const userInfo = {"role": user.role, "id": user._id, "name": user.name};                
-                const refreshToken =jwt.sign({userInfo},ACCESS_PRIV_KEY, {expiresIn: '1d'});
-                const accessToken =  jwt.sign({ userInfo } , REFRESH_PRIV_KEY , { expiresIn: '60s' });
+                // no es correcto poner [user.role] por que la funcion SidebarData esta hecha para un solo valor no array
+                const userInfo = {"role": [user.role], "id": user._id, "name": user.name};                
+                const refreshToken =jwt.sign({userInfo}, REFRESH_PRIV_KEY, {expiresIn: '15s'});
+                const accessToken =  jwt.sign({ userInfo } , ACCESS_PRIV_KEY, { expiresIn: '10s' });
                 bearerAccessToken = "Bearer " + accessToken;
                 bearerRefreshToken = "Bearer " + refreshToken;
                 user.refreshToken = bearerRefreshToken;
                 const userSidebar = sidebarData(user.role)
                 await user.save();
-                res.cookie('jwt', bearerRefreshToken, { httpOnly: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 });
+                res.cookie('jwt', bearerRefreshToken, { httpOnly: true,secure: true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 });
                 res.json({userInfo,bearerAccessToken,userSidebar,status:'Correct Password'})                   
             }
             else {
@@ -71,6 +70,8 @@ const singup = async(req, res) => {
     if (roles[role]) {
         role = roles[role]
         console.log('valid user')
+    }else{
+        res.json({status: 'invalid user role'})
     }
     if (!validation) { 
 

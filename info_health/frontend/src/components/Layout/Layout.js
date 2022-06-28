@@ -1,37 +1,51 @@
-import React, {useEffect} from "react";
-import { Outlet } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import { Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import SidebarBoots from "../SidebarBoots/SidebarBoots";
-//const jwt = require('jsonwebtoken')
+import useRefresh from "../../hooks/useRefresh";
+
 const Layout = () =>{
     
+    const [loading, setLoading] = useState(true);
     const {auth, setAuth} = useAuth();
-
+    const refresh = useRefresh();
+    const navigate = useNavigate();
     useEffect(() => {
-        try{
-            const isAuthenticated = Boolean(JSON.parse(window.localStorage.getItem('isAuthenticated')));
-            const userData = JSON.parse(window.localStorage.getItem('userData'));
-            //userData.isAuthenticated = isAuthenticated; 
-            if (userData.role === 'patient' || userData.role === 'Paciente') {
-                userData.role = ['2001']
-            }else{
-                userData.role = [userData.role];
-            }            
-            setAuth(prev =>{
-                return {...prev,userData,isAuthenticated}});
-            console.log(auth)
-            
+
+        let isMounted = true;
+
+        const verifyLogin = async () => {
+            try {
+                const sidebarData = JSON.parse(window.localStorage.getItem('sidebarData'));
+                setAuth(prev =>{return {...prev,sidebarData}});
+                await refresh();
+                
+            }
+            catch(error){
+                console.log(error);
+                setLoading(false);
+                //se tedria que usar useLogout para desaparecer cookies y variable local  storage 
+                
+            }
+            finally{
+                isMounted && setLoading(false);
+            }
         }
-        catch (error) {
-            console.log(error)
-        }
-    },[auth.isAuthenticated])
+
+        auth.userToken? setLoading(false) : verifyLogin();
+        console.log(auth);
+        return isMounted = false;
+
+    },[]);
+
+    
+
 
     
     return(
         <div>
-            {auth.isAuthenticated ? <SidebarBoots SidebarData={auth.sidebarData}/> : ""}
-            <Outlet/>
+            
+            {auth.isAuthenticated ? <Outlet/> : loading ? <p>... Loading</p> : navigate('../signin')}
          
         </div>
     );

@@ -34,7 +34,7 @@ const Signin = () => {
         try {
             const url = 'http://localhost:4000/auth/singin'
 
-            const { data } = await Axios.post(url, {  ...e  });
+            const { data } = await Axios.post(url, {  ...e  },{withCredentials: true});
             const userData = data.userInfo;
             const userToken = data.bearerAccessToken;
             const sidebarData = data.userSidebar;
@@ -45,15 +45,13 @@ const Signin = () => {
                     'loggedUser', JSON.stringify(userToken));
                 window.localStorage.setItem('isAuthenticated', 'true');
                 window.localStorage.setItem('userData', JSON.stringify(userData));
+                window.localStorage.setItem('sidebarData', JSON.stringify(sidebarData));
                 //navigate('../menu')
                 navigate(from, {replace: true})
+                console.log(from)
 
             } else {
-                if (data.name) {
-                    window.location.href = './login'
-                } else {
-                    alert('user or password does not match')
-                }
+                 alert('user or password does not match')    
             }
         } catch (error) {
             console.log(error);
