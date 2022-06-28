@@ -27,7 +27,7 @@ function IconSelector (icon)  {
         //doctor icons
         RiMicroscopeFill: <RiMicroscopeFill/>,
         RiFileSearchFill: <RiFileSearchFill/>,
-        FaFileUpload: <FaFileUpload/>,
+        //FaFileUpload
 
         // admin icons
         MdDateRange: <MdDateRange/>,
