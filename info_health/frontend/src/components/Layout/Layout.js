@@ -1,15 +1,20 @@
 import React, {useEffect, useState} from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate, useLocation, Navigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import SidebarBoots from "../SidebarBoots/SidebarBoots";
+//import SidebarBoots from "../SidebarBoots/SidebarBoots";
 import useRefresh from "../../hooks/useRefresh";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import ModalWindow from "../ModalWindow/ModalWindow";
+
 
 const Layout = () =>{
     
     const [loading, setLoading] = useState(true);
+    const [modal, setModal] = useState(false);
     const {auth, setAuth} = useAuth();
     const refresh = useRefresh();
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
+    const location = useLocation();
     useEffect(() => {
 
         let isMounted = true;
@@ -23,9 +28,7 @@ const Layout = () =>{
             }
             catch(error){
                 console.log(error);
-                setLoading(false);
-                //se tedria que usar useLogout para desaparecer cookies y variable local  storage 
-                
+                setLoading(false);  
             }
             finally{
                 isMounted && setLoading(false);
@@ -33,19 +36,19 @@ const Layout = () =>{
         }
 
         auth.userToken? setLoading(false) : verifyLogin();
-        console.log(auth);
-        return isMounted = false;
+        return () => isMounted = false;
 
     },[]);
 
-    
+    useEffect(() => {setModal(auth.modalWindow)},[auth.modalWindow])
 
 
     
     return(
         <div>
-            
-            {auth.isAuthenticated ? <Outlet/> : loading ? <p>... Loading</p> : navigate('../signin')}
+                        
+            {auth.isAuthenticated ? <Outlet/> : loading ? <LoadingSpinner/>: <Navigate to="/signin" state={{from: location}} replace />}            
+            {modal && <ModalWindow/>}
          
         </div>
     );

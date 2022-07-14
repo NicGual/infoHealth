@@ -1,7 +1,6 @@
 const crypto = require('crypto');
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
-const fs = require('fs');
 const path = require('path');
 const sidebarData = require('../utils/SidebarData');
 
@@ -14,7 +13,7 @@ const login = async (req, res) => {
         const ACCESS_PRIV_KEY = process.env.ACCESS_TOKEN_SECRET;
         console.log(user)
         if(!user) {
-            res.json({user: 'Not Found'});
+            res.json({user: 'Not Found'});// OJO
         }  
         else { 
             console.log(user.password)
@@ -23,7 +22,7 @@ const login = async (req, res) => {
             if(match) {
                 // no es correcto poner [user.role] por que la funcion SidebarData esta hecha para un solo valor no array
                 const userInfo = {"role": [user.role], "id": user._id, "name": user.name};                
-                const refreshToken =jwt.sign({userInfo}, REFRESH_PRIV_KEY, {expiresIn: '15s'});
+                const refreshToken =jwt.sign({userInfo}, REFRESH_PRIV_KEY, {expiresIn: '30s'});
                 const accessToken =  jwt.sign({ userInfo } , ACCESS_PRIV_KEY, { expiresIn: '10s' });
                 bearerAccessToken = "Bearer " + accessToken;
                 bearerRefreshToken = "Bearer " + refreshToken;

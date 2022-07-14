@@ -24,17 +24,19 @@ const useAxiosProtect = () => {
                 const prevRequest = error?.config;
                 if (error?.response?.status === 403 && !prevRequest.sent){
                     prevRequest.sent = true;
-                    const newAccessToken = await refresh();
-                    //llega hasta aqui la ejecucion por que recibe un error 403 y lo muestra 
-                    prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
-                    return axiosProtect(prevRequest);
+                    try {
+                        const newAccessToken = await refresh();                        
+                        prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
+                        return axiosProtect(prevRequest);
+
+                    } catch(err) {
+                        console.log(err);
+                    }
+                    
                 }
 
                 if (error?.response?.status === (403 || 401) && prevRequest.sent) {
-                    console.log('se ejecuto esta vaina');
-                    await logOut();
-
-
+                    setAuth(prev => {return{...prev,modalWindow: true}});
                 }
                 return Promise.reject(error);
             }

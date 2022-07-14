@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
+const getSidebarData = require('../utils/SidebarData');
 
 const handleRefreshToken = async (req, res) => {
     const cookies = req.cookies;
@@ -20,6 +21,7 @@ const handleRefreshToken = async (req, res) => {
             console.log(decoded);
             const role = [foundUser.role];
             const userInfo = {"id": decoded.userInfo.id, "name": decoded.userInfo.name,"role": decoded.userInfo.role};
+            const sidebarData = getSidebarData(foundUser.role);
             const accessToken = jwt.sign(
                 {
                     "userInfo": userInfo
@@ -27,7 +29,7 @@ const handleRefreshToken = async (req, res) => {
                 process.env.ACCESS_TOKEN_SECRET,
                 { expiresIn: '60s' }
             );
-            res.json({ accessToken, role, userInfo, isAuthenticated: true})
+            res.json({ accessToken, role, userInfo, sidebarData, isAuthenticated: true})
         }
     );
 }

@@ -17,7 +17,7 @@ const Signin = () => {
 
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || "/";
+    const from = location.state?.from?.pathname || "/menu";
     const {auth, setAuth} = useAuth();
     const [form, setForm] = useState(initialState);
     const { register, handleSubmit, formState: { errors }} = useForm();

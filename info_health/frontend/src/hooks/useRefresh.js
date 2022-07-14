@@ -8,6 +8,7 @@ const useRefresh = () => {
 
     const refreshToken = async () => {
         //try {
+        
             const response = await Axios.get(endpoint, { withCredentials: true });
             setAuth(prev => {
                 console.log(JSON.stringify(prev));
@@ -17,12 +18,14 @@ const useRefresh = () => {
                     role: response.data.role,
                     isAuthenticated: response.data.isAuthenticated,
                     userData: response.data.userInfo,
-                    userToken: 'Bearer ' + response.data.accessToken
+                    userToken: 'Bearer ' + response.data.accessToken,
+                    sidebarData: response.data.sidebarData
                 }
             });
             console.log(auth);
 
             return response.data.accessToken;
+        
         // }
         // catch (err) {
         //     console.log(err);

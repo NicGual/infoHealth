@@ -4,10 +4,10 @@ import { useNavigate } from 'react-router-dom';
 const useLogout = () => {
 
     const { setAuth } = useAuth();
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
     const logout = async () => {
         
-        setAuth({});
+        
         try {
             
             const response = Axios.get('/logout', { withCredentials: true });
@@ -15,9 +15,11 @@ const useLogout = () => {
             window.localStorage.removeItem('isAuthenticated')
             window.localStorage.removeItem('userData')
             window.localStorage.removeItem('sidebarData')
-            navigate('../signin')
+            //navigate('../signin')
         } catch (error) {
             console.error(error);
+        }finally{
+            setAuth({LoggedOut: true});
         }
     }
     return logout;
