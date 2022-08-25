@@ -23,6 +23,9 @@ import SidebarProvider from './components/SidebarProvider/SidebarProvider';
 import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner';
 import ModalWindow from './components/ModalWindow/ModalWindow';
 import NotAuthenticated from './components/NotAuthenticated/NotAuthenticated';
+import UploadResults from './components/UploadResults/UploadResults';
+import CreateUser from './components/CreateUser/CreateUser';
+import EditAppointment from './components/EditAppointment/EditAppointment';
 
 function App() {
   return (
@@ -39,16 +42,21 @@ function App() {
 
             <Route element={<ProtectedRoute allowedRoles={['2002', '2004']} />}>
               <Route path='/editar-resultados' element={<EditResults />} />
+              <Route path='/subir-resultados' element={<UploadResults/>} />
+            </Route>
+
+            <Route element={<ProtectedRoute allowedRoles={['2001', '2003', '2004']} />}>
+              <Route path='/asignacion-citas' element={<Appointments />} />
             </Route>
 
             <Route element={<ProtectedRoute allowedRoles={['2003', '2004']} />}>
-              <Route path='/toma-laboratorio' element={<LabTest />} />
-              <Route path='/asignacion-citas' element={<Appointments />} />
+              <Route path='/toma-laboratorio' element={<LabTest />} />              
               <Route path='/agenda' element={<Agenda />} />
             </Route>
 
             <Route element={<ProtectedRoute allowedRoles={['2002', '2003', '2004']} />}>
               <Route path='/buscar-pacientes' element={<PatientSearch />} />
+              <Route path='/editar-citas' element={<EditAppointment/>} />
             </Route>
 
             <Route element={<ProtectedRoute allowedRoles={['2001', '2002', '2003', '2004']} />}>
@@ -60,6 +68,7 @@ function App() {
 
             <Route element={<ProtectedRoute allowedRoles={['2004']} />}>
               <Route path='/editar-usuario' element={<EditUser />} />
+              <Route path='/crear-usuario' element={<CreateUser />} />
             </Route>
 
           </Route>

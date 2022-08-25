@@ -1,11 +1,11 @@
 const PatientSidebarData = [
     {
         tittle: 'Asignacion de Citas',
-        path: '/',
+        path: '/asignacion-citas',
         icon: 'RiHealthBookFill',
         cName: 'list-group link-dark rounded',
         iName: 'asignacion',
-        adding: [['Mediciana General', '/medicina-general'], ['Toma de laboratorio', '/toma-laboratorio']]
+        // adding: [['Mediciana General', '/medicina-general'], ['Toma de laboratorio', '/toma-laboratorio']]
     },
     {
         tittle: 'Consulta de Resultados',
@@ -39,7 +39,7 @@ const PatientSidebarData = [
 const LabSidebarData = [
     {
         tittle: 'Subir resultados',
-        path: '/editar-resultados',
+        path: '/subir-resultados',
         icon: 'FaFileUpload',
         cName: 'list-group link-dark rounded',
         iName: 'subir-resultados'
@@ -110,7 +110,7 @@ const AdminSidebarData = [
         icon: 'MdDateRange',
         cName: 'list-group link-dark rounded',
         iName: 'citas',
-        adding: [['Asignacion de Citas', '/asignacion-citas'], ['Cancelacion de Citas', '/cancelacion-citas'], ['Reasignacion de Citas', '/reasignacion-citas']]
+        adding: [['Asignacion de Citas', '/asignacion-citas'], ['Editar Citas', '/editar-citas']]
     },
     {
         tittle: 'Usuarios',
