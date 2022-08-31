@@ -22,8 +22,8 @@ const login = async (req, res) => {
             if(match) {
                 // no es correcto poner [user.role] por que la funcion SidebarData esta hecha para un solo valor no array
                 const userInfo = {"role": [user.role], "id": user._id, "name": user.name};                
-                const refreshToken =jwt.sign({userInfo}, REFRESH_PRIV_KEY, {expiresIn: '30s'});
-                const accessToken =  jwt.sign({ userInfo } , ACCESS_PRIV_KEY, { expiresIn: '10s' });
+                const refreshToken =jwt.sign({userInfo}, REFRESH_PRIV_KEY, {expiresIn: '2d'});
+                const accessToken =  jwt.sign({ userInfo } , ACCESS_PRIV_KEY, { expiresIn: '1d' });
                 bearerAccessToken = "Bearer " + accessToken;
                 bearerRefreshToken = "Bearer " + refreshToken;
                 user.refreshToken = bearerRefreshToken;

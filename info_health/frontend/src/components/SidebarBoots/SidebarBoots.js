@@ -17,10 +17,10 @@ const SidebarBoots = (props) => {
 
     return (
         <>
-            <div className='navbar'>
+            <div className='navbar fixed-top mb-4'>
                 <FaBars className='menu-bars ' onClick={showSidebar} />
             </div>
-            <div className="flex-shrink-0 p-3 bg-white" style={{ width: '300px' }}>
+            <div className="flex-shrink-0 p-3 bg-white" style={{ width: '300px', height:'80px' }}>
 
                 <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
 

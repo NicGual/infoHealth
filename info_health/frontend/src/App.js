@@ -26,6 +26,8 @@ import NotAuthenticated from './components/NotAuthenticated/NotAuthenticated';
 import UploadResults from './components/UploadResults/UploadResults';
 import CreateUser from './components/CreateUser/CreateUser';
 import EditAppointment from './components/EditAppointment/EditAppointment';
+import TableAppointment from './components/TableAppointment/TableAppointment';
+
 
 function App() {
   return (
@@ -82,7 +84,7 @@ function App() {
 
 
 
-        <Route path='/prueba' element={<LoadingSpinner />} />
+        <Route path='/prueba' element={<TableAppointment />} />
       </Routes>
     </>
   )
