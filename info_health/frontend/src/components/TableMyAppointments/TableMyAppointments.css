@@ -1,0 +1,163 @@
+/* .table-header{
+    background-color: #3E8CD0;
+    color: white;
+    border-radius: 50px;
+}
+
+.row-body{
+    background-color: #D9D9D9;
+    
+}
+
+.nombre{
+    height: 40px;
+}
+
+.especialidad{
+    height: 40px;
+}
+
+.opciones{
+    height: 40px;
+    width: 50%;
+    font-size: 25px;
+}
+
+.edit{
+    color: #05DB2B;
+}
+
+.delete{
+    color: #E20404;
+} */
+
+.table-selector {
+    background-color: #3E8CD0;
+    width: 1200px;
+    height: 51px;
+}
+
+.active-appointment {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    width: 227px;
+    height: 39px;
+}
+
+.previous {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    width: 227px;
+    height: 39px;
+}
+
+.container-option {
+    color: #3E8CD0;
+    border-radius: 10px;
+    width: 257px;
+    height: 39px;
+}
+
+.container-option-active {
+    color: #3E8CD0;
+    background-color: white;
+    border-radius: 10px;
+    width: 257px;
+    height: 39px;
+    color: #3E8CD0;
+    cursor: pointer;
+}
+
+.container-option-disabled {
+    color: white;
+    background-color: #3E8CD0;
+    border-radius: 10px;
+    width: 257px;
+    height: 39px;
+    cursor: pointer;
+}
+
+.search {
+    width: 51px;
+    height: 51px;
+    background-color: #3E8CD0;
+}
+
+.search-icon {
+    width: 30px;
+    height: 30px;
+    color: white;
+}
+
+
+@media screen and (max-width: 798px) {
+    .table-selector div {
+        font-size: 20px;
+        width: 200px;
+    }
+
+    .search svg {
+        width: 25px;
+        height: 25px;
+    }
+
+}
+@media screen and (max-width: 492px) {
+    .table-selector div {
+        font-size: 18px;
+        width: 135px;
+        height: 35px;
+    }
+
+    .search svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .table-selector {
+        background-color: #3E8CD0;
+        width: 1200px;
+        height: 40px;
+    }
+    .search {
+        width: 40px;
+        height: 40px;
+        background-color: #3E8CD0;
+    }
+
+}
+
+
+/* @media (max-width: 991px) {
+    .active {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 20px;
+        width: 227px;
+        height: 39px;
+    }
+    
+    .previous {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 28px;
+        width: 227px;
+        height: 39px;
+    }
+    .table-selector {
+        background-color: #3E8CD0;
+        width: 900px;
+        height: 51px;
+    }
+    .container-options {
+        width: 900px;
+        height: 51px;
+
+    }
+} */

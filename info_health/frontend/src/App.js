@@ -26,7 +26,7 @@ import NotAuthenticated from './components/NotAuthenticated/NotAuthenticated';
 import UploadResults from './components/UploadResults/UploadResults';
 import CreateUser from './components/CreateUser/CreateUser';
 import EditAppointment from './components/EditAppointment/EditAppointment';
-import TableAppointment from './components/TableAppointment/TableAppointment';
+import TableMyAppointments from './components/TableMyAppointments/TableMyAppointments';
 
 
 function App() {
@@ -84,7 +84,7 @@ function App() {
 
 
 
-        <Route path='/prueba' element={<TableAppointment />} />
+        <Route path='/prueba' element={<TableMyAppointments />} />
       </Routes>
     </>
   )
