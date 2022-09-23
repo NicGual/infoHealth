@@ -32,7 +32,7 @@ const SidebarBoots = (props) => {
                                 <AiOutlineClose onClick={showSidebar} />
                             </Link>
                         </li>
-                        <a href="/" className="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+                        <a href="/" className="d-flex align-items-center pb-3 mb-3 link-light text-decoration-none border-bottom">
                             <span className="fs-5 fw-semibold">Menu</span>
                         </a>
                         {
@@ -84,7 +84,7 @@ const SidebarBoots = (props) => {
 
                         <li className="border-top my-3"></li>
                         <li className="mb-1">
-                            <button className="btn btn-toggle align-items-center rounded collapsed" onClick={logOut}>
+                            <button className="btn btn-toggle align-items-center rounded collapsed link-light" onClick={logOut}>
                                 Log out
                             </button>
                         </li>

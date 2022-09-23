@@ -1,0 +1,54 @@
+h2 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 58px;
+}
+
+h3 {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 39px;
+}
+
+.search-box {
+    background: #FFFDFD;
+    border: 1px solid #000000;
+    border-radius: 10px;
+}
+
+.search-btn-app {
+    background: #016CC8;
+    border-radius: 20px;
+    color: white;
+    border: 1px solid #016CC8;
+}
+
+.results-username {
+    height: 47px;
+    background: #3E8CD0;
+    color: white;
+}
+
+.results-row {
+    height: 120px;
+    background: #D9D9D9;
+    border-radius: 15px;
+}
+
+.button-results {
+    background: #05DB2B;
+    border-radius: 20px;
+    border: 1px solid #05DB2B;
+    color: white;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .container .results-row {
+        height: 160px;
+    }
+}

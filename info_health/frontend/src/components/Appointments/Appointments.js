@@ -107,7 +107,6 @@ const Appointments = () => {
                     </div>
                     
                     <div className="col-xs-12 col-md-2 col-12 mb-3 fs-4 d-flex align-items-end">
-                        {/* <button className="btn btn-primary  ">Buscar</button> */}
                         <div className="d-grid gap-2 col-6 mx-auto">
                             <button className="btn btn-primary" type="button" onClick={search}>Buscar</button>
                             

@@ -1,0 +1,67 @@
+.row-container {
+    background-color: #D9D9D9;
+    height: 52px;
+    border-radius: 15px;
+    color: black;
+}
+
+.row-container div {
+    font-size: 18px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+}
+
+.row-icons svg {
+    font-size: 35px;
+}
+
+.row-icons-delete {
+    color: #E20404;
+    cursor: pointer;
+}
+
+.row-icons-edit {
+    color: #05DB2B;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 798px) {
+    .row-container div {
+        font-size: 15px;
+    }
+
+    .row-container .row-icons svg {
+        font-size: 20px;
+    }
+
+    .row-container {
+        background-color: #D9D9D9;
+        height: 55px;
+        border-radius: 15px;
+        color: black;
+    }
+
+
+
+}
+
+@media screen and (max-width: 492px) {
+    .row-container div {
+        font-size: 13px;
+    }
+
+    .row-container .row-icons svg {
+        font-size: 20px;
+    }
+
+    .row-container {
+        background-color: #D9D9D9;
+        height: 57px;
+        border-radius: 15px;
+        color: black;
+    }
+
+
+}

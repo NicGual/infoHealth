@@ -1,0 +1,13 @@
+.section-header {
+    background-color: #016CC8;
+}
+
+.section-header h2 {
+    font-size: 25px;
+}
+
+@media screen and (max-width: 370px) {
+    .section-header h2 {
+        font-size: 20px;
+    }
+}

@@ -1,0 +1,15 @@
+.edit-info-header{
+    background-color: #016CC8;
+    height: 40px;
+}
+
+.edit-information-icon{
+    color: white;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.session-data-header{
+    background-color: #016CC8;
+}

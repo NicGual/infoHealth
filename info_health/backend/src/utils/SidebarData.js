@@ -1,11 +1,18 @@
 const PatientSidebarData = [
     {
+        tittle: 'Mis Citas',
+        path: '/citas',
+        icon: 'RiHealthBookFill',
+        cName: 'list-group link-dark rounded',
+        iName: 'citas',
+    },
+    {
         tittle: 'Asignacion de Citas',
         path: '/asignacion-citas',
         icon: 'RiHealthBookFill',
         cName: 'list-group link-dark rounded',
         iName: 'asignacion',
-        // adding: [['Mediciana General', '/medicina-general'], ['Toma de laboratorio', '/toma-laboratorio']]
+        adding: [['Mediciana General', '/medicina-general'], ['Toma de laboratorio', '/asignacion-citas-laboratorio']]
     },
     {
         tittle: 'Consulta de Resultados',

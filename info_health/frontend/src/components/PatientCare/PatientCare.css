@@ -1,0 +1,14 @@
+.patient-care-section {
+    cursor: pointer;
+}
+
+.patient-care-section
+
+.icon {
+    transition: 500ms;
+}
+
+.patient-care-section:not(.collapsed) .rotate {
+    transform:rotate(180deg);
+    transition: 500ms;
+}

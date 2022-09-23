@@ -44,6 +44,7 @@
     font-size: 32px;
     width: 227px;
     height: 39px;
+    user-select: none;
 }
 
 .previous {
@@ -53,6 +54,7 @@
     font-size: 32px;
     width: 227px;
     height: 39px;
+    user-select: none;
 }
 
 .container-option {
@@ -85,6 +87,7 @@
     width: 51px;
     height: 51px;
     background-color: #3E8CD0;
+    
 }
 
 .search-icon {

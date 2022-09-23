@@ -145,9 +145,11 @@ body {
   position: fixed;
   top: 0;
   left: -100%;
+  z-index: 1;
   transition: 850ms;
 }
 .nav-menu.active {
+  z-index: 2;
   left: 0;
   transition: 350ms;
 }
