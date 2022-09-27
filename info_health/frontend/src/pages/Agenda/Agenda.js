@@ -1,5 +1,5 @@
 import React from "react";
-import MyAgenda from "../MyAgenda/MyAgenda";
+import MyAgenda from "../../components/MyAgenda/MyAgenda";
 
 const Agenda = () => {
 

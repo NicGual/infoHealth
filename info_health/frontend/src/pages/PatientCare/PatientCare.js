@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from 'react-router-dom'
 import { BiArrowBack } from 'react-icons/bi';
 import { AiOutlineDown } from 'react-icons/ai';
-import SectionHeader from "../SectionHeader/SectionHeader";
+import SectionHeader from "../../components/SectionHeader/SectionHeader";
 import './PatientCare.css'
 import Results from "../Results/Results";
 const PatientCare = () => {

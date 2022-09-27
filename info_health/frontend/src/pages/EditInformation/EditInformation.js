@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { AiFillEdit } from 'react-icons/ai';
-import CustomButtonLarge from "../CustomButton/CustomButtonLarge";
+import CustomButtonLarge from "../../components/CustomButton/CustomButtonLarge";
 import './EditInformation.css'
 import { useForm } from "react-hook-form";
 

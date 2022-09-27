@@ -1,7 +1,5 @@
 import React from "react";
-import ModalWindow2 from "../ModalWindow2/ModalWindow2";
-import TableMyAppointments from "../TableMyAppointments/TableMyAppointments";
-import TableRow from "../TableRow/TableRow";
+import TableMyAppointments from "../../components/TableMyAppointments/TableMyAppointments";
 import './MyAppointments.css'
 
 const MyAppointments = () => {

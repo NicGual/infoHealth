@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import TableAppointment from "../TableAppointment/TableAppointment";
+import TableAppointment from "../../components/TableAppointment/TableAppointment";
 import useGetAppointmentData from "../../hooks/useGetAppointmentData";
-import '../TableAppointment/TableAppointment.css';
+import '../../components/TableAppointment/TableAppointment.css';
 
 const Appointments = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();

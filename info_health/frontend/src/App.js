@@ -1,39 +1,38 @@
 import React from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import './App.css';
-import Results from './components/Results/Results';
-import Menu from './components/Menu/Menu';
+import Results from './pages/Results/Results';
+import Menu from './pages/Menu/Menu';
 import Layout from './components/Layout/Layout';
-import Signin from './components/Signin/Signin'
-import Signup from './components/Signup/Signup';
-import Statistics from './components/Statistics/Statistics';
-import NotFound from './components/NotFound/NotFound'
+import Signin from './pages/Signin/Signin'
+import Signup from './pages/Signup/Signup';
+import Statistics from './pages/Statistics/Statistics';
+import NotFound from './pages/NotFound/NotFound'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import './components/SidebarBoots/SidebarBoots.css'
-import Medicine from './components/Medicine/Medicine';
-import LabTest from './components/LabTest/LabTest';
-import ActiveOrders from './components/ActiveOrders/ActiveOrders'
+import Medicine from './pages/Medicine/Medicine';
+import LabTest from './pages/LabTest/LabTest';
+import ActiveOrders from './pages/ActiveOrders/ActiveOrders'
 import Unauthorized from './components/Unauthorized/Unauthorized'
-import EditResults from './components/EditResults/EditResults'
-import Appointments from './components/Appointments/Appointments'
-import Agenda from './components/Agenda/Agenda'
-import PatientSearch from './components/PatientSearch/PatientSearch'
-import EditUser from './components/EditUser/EditUser'
+import EditResults from './pages/EditResults/EditResults'
+import Appointments from './pages/Appointments/Appointments'
+import Agenda from './pages/Agenda/Agenda'
+import PatientSearch from './pages/PatientSearch/PatientSearch'
+import EditUser from './pages/EditUser/EditUser'
 import SidebarProvider from './components/SidebarProvider/SidebarProvider';
 import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner';
 import ModalWindow from './components/ModalWindow/ModalWindow';
 import NotAuthenticated from './components/NotAuthenticated/NotAuthenticated';
-import UploadResults from './components/UploadResults/UploadResults';
-import CreateUser from './components/CreateUser/CreateUser';
-import EditAppointment from './components/EditAppointment/EditAppointment';
+import UploadResults from './pages/UploadResults/UploadResults';
+import CreateUser from './pages/CreateUser/CreateUser';
+import EditAppointment from './pages/EditAppointment/EditAppointment';
 import TableMyAppointments from './components/TableMyAppointments/TableMyAppointments';
-import MyAppointments from './components/MyAppointments/MyAppointments';
-import ModalWindow2 from './components/ModalWindow2/ModalWindow2';
-import EditInformation from './components/EditInformation/EditInformation';
+import MyAppointments from './pages/MyAppointments/MyAppointments';
+import EditInformation from './pages/EditInformation/EditInformation';
 import InputValidation from './components/InputValidation/InputValidation';
 import Prueba from './components/Prueba/Prueba';
 import MyAgenda from './components/MyAgenda/MyAgenda';
-import PatientCare from './components/PatientCare/PatientCare';
+import PatientCare from './pages/PatientCare/PatientCare';
 
 
 function App() {
