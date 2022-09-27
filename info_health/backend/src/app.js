@@ -26,7 +26,8 @@ app.use('/refresh', require('./routes/refresh'));
 app.use('/logout', require('./routes/logout'));
 //app.use('/logout', require('./routes/logout'))
 app.use('/api/users',require('./routes/users'));
-app.use('/api/notes',require('./routes/notes'));
+app.use('/api/appointments',require('./routes/appointments'));
+
 
 
 module.exports = app;

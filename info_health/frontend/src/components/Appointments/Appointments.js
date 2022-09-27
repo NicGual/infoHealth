@@ -1,76 +1,28 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import TableAppointment from "../TableAppointment/TableAppointment";
+import useGetAppointmentData from "../../hooks/useGetAppointmentData";
 import '../TableAppointment/TableAppointment.css';
 
 const Appointments = () => {
-    const citas = [
-
-        {
-            fecha: ' 3 de agosto 2022',
-            detalles: [
-                {
-                    hora: '1:00',
-                    doctor: 'nicolas gualteros',
-                    procedimiento: 'medicina general'
-                },
-                {
-                    hora: '2:00',
-                    doctor: 'nicolas gualteros',
-                    procedimiento: 'medicina general'
-                },
-                {
-                    hora: '3:00',
-                    doctor: 'nicolas gualteros',
-                    procedimiento: 'medicina general'
-                }
-            ]
-        },
-        {
-            fecha: ' 4 de agosto 2022',
-            detalles: [
-                {
-                    hora: '1:00',
-                    doctor: 'nicolas gualteros',
-                    procedimiento: 'medicina general'
-                },
-                {
-                    hora: '2:00',
-                    doctor: 'nicolas gualteros',
-                    procedimiento: 'medicina general'
-                },
-                {
-                    hora: '3:00',
-                    doctor: 'nicolas gualteros',
-                    procedimiento: 'medicina general'
-                }
-            ]
-        },
-        {
-            fecha: ' 5 de agosto 2022',
-            detalles: [
-                {
-                    hora: '1:00',
-                    doctor: 'nicolas gualteros',
-                    procedimiento: 'medicina general'
-                },
-                {
-                    hora: '2:00',
-                    doctor: 'nicolas gualteros',
-                    procedimiento: 'medicina general'
-                },
-                {
-                    hora: '3:00',
-                    doctor: 'nicolas gualteros',
-                    procedimiento: 'medicina general'
-                }
-            ]
-        }
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const [results, setResults] = useState();
+    const [isEmpty, setIsEmpty] = useState(true);
+    const getAppointmentData = useGetAppointmentData();
 
 
-    ]
-    const [results,setResults] = useState();
-    const search = () => {
+    const search = (citas) => {
         setResults(citas)
+    }
+    const onSubmit = async (e) => {
+        const appointmentInformation = e
+        console.log(appointmentInformation)
+        let appointments = await getAppointmentData(appointmentInformation)
+        console.log(appointments)
+        console.log(appointments.length)
+        if(!appointments.length==0){setIsEmpty(false)}
+        console.log(isEmpty)
+        search(appointments)
     }
     return (
         <>
@@ -80,19 +32,37 @@ const Appointments = () => {
                         <h2>Asignacion De Citas Para Laboratorio</h2>
                     </div>
                 </div>
-                <div className="pt-3 row">
+                <form className="row pt-3" onSubmit={handleSubmit(onSubmit)}>
                     <div className="col-xs-12 col-md-4 col-12  mb-3 fs-4">
                         <label className='mb-2 text-capitalize' for='examen' >Seleccione tipo de Examen</label>
-                        <select class="form-select form-select-sm" aria-label=".form-select-sm example" id='examen'>
-                            <option selected>seleccione el tipo de examen</option>
-                            <option value="Ácido Metilmalónico">Ácido Metilmalónico</option>                           
+                        <select class="form-select form-select-sm"
+                            aria-label=".form-select-sm example"
+                            id='examen'
+                            name="tipo_examen"
+                            {...register("tipo_examen", {
+                                required: {
+                                    value: false
+                                }
+                            })}
+                        >
+                            <option value="" selected>seleccione el tipo de examen</option>
+                            <option value="Ácido Metilmalónico">Ácido Metilmalónico</option>
                         </select>
                     </div>
                     <div className="col-xs-12 col-md-3 col-12 mb-3 fs-4">
                         <label className='mb-2 text-capitalize' for='examen' >Médico</label>
-                        <select class="form-select form-select-sm" aria-label=".form-select-sm example" id='examen'>
-                            <option selected>Seleccione su medico</option>
-                            <option value="Nicolas Gualteros Herrera">Nicolas Gualteros Herrera</option>                            
+                        <select class="form-select form-select-sm"
+                            aria-label=".form-select-sm example"
+                            id='examen'
+                            name="medico_seleccionado"
+                            {...register("medico_seleccionado", {
+                                required: {
+                                    value: false
+                                }
+                            })}
+                        >
+                            <option value="" selected>Seleccione su medico</option>
+                            <option value="Nicolas Gualteros Herrera">Nicolas Gualteros Herrera</option>
                         </select>
                     </div>
                     <div className="col-xs-12 col-md-3 col-12 mb-3 fs-4">
@@ -103,17 +73,31 @@ const Appointments = () => {
                             id="fechaCita"
                             name="fecha_cita"
                             placeholder="Fecha"
+                            {...register("fecha_cita", {
+                                required: {
+                                    value: true,
+                                    message: "ingrese una fecha por favor"
+                                }
+                            })}
                         />
+
                     </div>
-                    
+
                     <div className="col-xs-12 col-md-2 col-12 mb-3 fs-4 d-flex align-items-end">
                         <div className="d-grid gap-2 col-6 mx-auto">
-                            <button className="btn btn-primary" type="button" onClick={search}>Buscar</button>
-                            
+                            <button className="btn btn-primary" type="submit">Buscar</button>
+
                         </div>
                     </div>
-                </div>
-                {results ? <TableAppointment citas={results} /> : ''}
+                </form>
+                {errors["fecha_cita"] && <p className='text-danger' >
+                    <h6>
+                        {errors["fecha_cita"].message}
+                    </h6>
+                </p>}
+
+                {/* {!results  ? ''  : <TableAppointment citas={results} /> } */}
+                {!results ? ' ingrese valor' : !isEmpty ? <TableAppointment citas={results} />: 'no hay citas'}
             </div>
         </>
     )
