@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import TableAppointment from "../../components/TableAppointment/TableAppointment";
 import useGetAppointmentData from "../../hooks/useGetAppointmentData";
 import '../../components/TableAppointment/TableAppointment.css';
+import NotResults from "../../components/NotResults/NotResults";
+import SearchImage from "../../components/SearchImage/SearchImage";
 
 const Appointments = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -95,9 +97,7 @@ const Appointments = () => {
                         {errors["fecha_cita"].message}
                     </h6>
                 </p>}
-
-                {/* {!results  ? ''  : <TableAppointment citas={results} /> } */}
-                {!results ? ' ingrese valor' : !isEmpty ? <TableAppointment citas={results} />: 'no hay citas'}
+                {!results ? <SearchImage/> : !isEmpty ? <TableAppointment citas={results} />: <NotResults/>}
             </div>
         </>
     )

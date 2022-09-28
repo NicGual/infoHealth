@@ -1,72 +1,72 @@
 const appointmentsCtrl={}
 
 appointmentsCtrl.getAppointments = (req,res) => {
-    const appointments = [
+    // const appointments = [
 
-        {
-            fecha: ' 3 de agosto 2022',
-            detalles: [
-                {
-                    hora: '1:00',
-                    doctor: 'nicolas gualteros',
-                    procedimiento: 'medicina general'
-                },
-                {
-                    hora: '2:00',
-                    doctor: 'nicolas gualteros',
-                    procedimiento: 'medicina general'
-                },
-                {
-                    hora: '3:00',
-                    doctor: 'nicolas gualteros',
-                    procedimiento: 'medicina general'
-                }
-            ]
-        },
-        {
-            fecha: ' 4 de agosto 2022',
-            detalles: [
-                {
-                    hora: '1:00',
-                    doctor: 'nicolas gualteros',
-                    procedimiento: 'medicina general'
-                },
-                {
-                    hora: '2:00',
-                    doctor: 'nicolas gualteros',
-                    procedimiento: 'medicina general'
-                },
-                {
-                    hora: '3:00',
-                    doctor: 'nicolas gualteros',
-                    procedimiento: 'medicina general'
-                }
-            ]
-        },
-        {
-            fecha: ' 5 de agosto 2022',
-            detalles: [
-                {
-                    hora: '1:00',
-                    doctor: 'nicolas gualteros',
-                    procedimiento: 'medicina general'
-                },
-                {
-                    hora: '2:00',
-                    doctor: 'nicolas gualteros',
-                    procedimiento: 'medicina general'
-                },
-                {
-                    hora: '3:00',
-                    doctor: 'nicolas gualteros',
-                    procedimiento: 'medicina general'
-                }
-            ]
-        }
+    //     {
+    //         fecha: ' 3 de agosto 2022',
+    //         detalles: [
+    //             {
+    //                 hora: '1:00',
+    //                 doctor: 'nicolas gualteros',
+    //                 procedimiento: 'medicina general'
+    //             },
+    //             {
+    //                 hora: '2:00',
+    //                 doctor: 'nicolas gualteros',
+    //                 procedimiento: 'medicina general'
+    //             },
+    //             {
+    //                 hora: '3:00',
+    //                 doctor: 'nicolas gualteros',
+    //                 procedimiento: 'medicina general'
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         fecha: ' 4 de agosto 2022',
+    //         detalles: [
+    //             {
+    //                 hora: '1:00',
+    //                 doctor: 'nicolas gualteros',
+    //                 procedimiento: 'medicina general'
+    //             },
+    //             {
+    //                 hora: '2:00',
+    //                 doctor: 'nicolas gualteros',
+    //                 procedimiento: 'medicina general'
+    //             },
+    //             {
+    //                 hora: '3:00',
+    //                 doctor: 'nicolas gualteros',
+    //                 procedimiento: 'medicina general'
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         fecha: ' 5 de agosto 2022',
+    //         detalles: [
+    //             {
+    //                 hora: '1:00',
+    //                 doctor: 'nicolas gualteros',
+    //                 procedimiento: 'medicina general'
+    //             },
+    //             {
+    //                 hora: '2:00',
+    //                 doctor: 'nicolas gualteros',
+    //                 procedimiento: 'medicina general'
+    //             },
+    //             {
+    //                 hora: '3:00',
+    //                 doctor: 'nicolas gualteros',
+    //                 procedimiento: 'medicina general'
+    //             }
+    //         ]
+    //     }
 
 
-    ]
-    // const appointments = []
+    // ]
+    const appointments = []
     let queryParams ={}
     let {tipo_examen,medico_seleccionado,fecha_cita}=req.query;
 
