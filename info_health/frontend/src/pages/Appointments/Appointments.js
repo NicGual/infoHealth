@@ -11,8 +11,9 @@ const Appointments = () => {
     const [results, setResults] = useState();
     const [isEmpty, setIsEmpty] = useState(true);
     const getAppointmentData = useGetAppointmentData();
-
-
+    const date = new Date().toISOString().split("T")[0];
+    
+    console.log(date)
     const search = (citas) => {
         setResults(citas)
     }
@@ -67,15 +68,16 @@ const Appointments = () => {
                             <option value="Nicolas Gualteros Herrera">Nicolas Gualteros Herrera</option>
                         </select>
                     </div>
-                    <div className="col-xs-12 col-md-3 col-12 mb-3 fs-4">
-                        <label for="fechaCita" className="mb-2 text-capitalize">Fecha de cita</label>
+                    <div className="col-xs-12 col-md-2 col-12 mb-3 fs-4">
+                        <label for="fechaCitaDesde" className="mb-2 text-capitalize">Desde</label>
                         <input
                             type="date"
                             className="form-control form-control-sm bg-light mt-0"
-                            id="fechaCita"
-                            name="fecha_cita"
+                            id="fechaCitaDesde"
+                            name="fecha_cita_desde"
                             placeholder="Fecha"
-                            {...register("fecha_cita", {
+                            min={date}
+                            {...register("fecha_cita_desde", {
                                 required: {
                                     value: true,
                                     message: "ingrese una fecha por favor"
@@ -84,17 +86,35 @@ const Appointments = () => {
                         />
 
                     </div>
+                    <div className="col-xs-12 col-md-2 col-12 mb-3 fs-4">
+                        <label for="fechaCitaHasta" className="mb-2 text-capitalize">Hasta</label>
+                        <input
+                            type="date"
+                            className="form-control form-control-sm bg-light mt-0"
+                            id="fechaCitaHasta"
+                            name="fecha_cita_hasta"
+                            placeholder="Fecha"
+                            min={date}
+                            {...register("fecha_cita_hasta", {
+                                required: {
+                                    value: false,
+                                    message: "ingrese una fecha por favor"
+                                }
+                            })}
+                        />
 
-                    <div className="col-xs-12 col-md-2 col-12 mb-3 fs-4 d-flex align-items-end">
+                    </div>
+
+                    <div className="col-xs-12 col-md-1 col-12 mb-3 fs-4 d-flex align-items-end">
                         <div className="d-grid gap-2 col-6 mx-auto">
                             <button className="btn btn-primary" type="submit">Buscar</button>
 
                         </div>
                     </div>
                 </form>
-                {errors["fecha_cita"] && <p className='text-danger' >
+                {errors["fecha_cita_desde"] && <p className='text-danger' >
                     <h6>
-                        {errors["fecha_cita"].message}
+                        {errors["fecha_cita_desde"].message}
                     </h6>
                 </p>}
                 {!results ? <SearchImage/> : !isEmpty ? <TableAppointment citas={results} />: <NotResults/>}

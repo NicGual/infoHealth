@@ -68,18 +68,20 @@ appointmentsCtrl.getAppointments = (req,res) => {
     // ]
     const appointments = []
     let queryParams ={}
-    let {tipo_examen,medico_seleccionado,fecha_cita}=req.query;
+    let {tipo_examen,medico_seleccionado,fecha_cita_desde,fecha_cita_hasta}=req.query;
 
     //se seleccionan los datos que van a la query
     if (!medico_seleccionado==""){       
         queryParams.medico_seleccionado = medico_seleccionado
-        queryParams.fecha_cita = fecha_cita
     }
     if (!tipo_examen==""){
         queryParams.tipo_examen = tipo_examen
     }
-    if (!fecha_cita==""){
-        queryParams.fecha_cita = fecha_cita       
+    if (!fecha_cita_desde==""){
+        queryParams.fecha_cita_desde = fecha_cita_desde       
+    }
+    if (!fecha_cita_hasta==""){
+        queryParams.fecha_hasta = fecha_cita_hasta      
     }
     //se ejecuta la query con la base de datos
     console.log(JSON.stringify(queryParams))
