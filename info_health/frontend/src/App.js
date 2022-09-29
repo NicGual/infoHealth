@@ -10,7 +10,7 @@ import Statistics from './pages/Statistics/Statistics';
 import NotFound from './pages/NotFound/NotFound'
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import './components/SidebarBoots/SidebarBoots.css'
-import Medicine from './pages/Medicine/Medicine';
+import MedicineAppointments from './pages/MedicineAppointments/MedicineAppointments';
 import LabTest from './pages/LabTest/LabTest';
 import ActiveOrders from './pages/ActiveOrders/ActiveOrders'
 import Unauthorized from './components/Unauthorized/Unauthorized'
@@ -44,7 +44,7 @@ function App() {
           <Route element={<SidebarProvider />}>
             <Route element={<ProtectedRoute allowedRoles={['2001', '2004']} />}>
               <Route path='/resultados' element={<Results />} />
-              <Route path='/medicina-general' element={<Medicine />} />
+              <Route path='/medicina-general' element={<MedicineAppointments />} />
               <Route path='/ordenes' element={<ActiveOrders />} />
               <Route path='/citas' element={<MyAppointments />} />
             </Route>
